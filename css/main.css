@@ -1,0 +1,46 @@
+html,body{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	font-family: "Meiryo","Hiragino Maru Gothic Pro",sans-serif;
+}
+
+#header{
+	position: fixed;
+	width: 100%;
+	height: 80px;
+	background-color: #a22041;
+	color: #ffffff;
+	margin:0; padding: 0;
+	text-align: center;
+	top: 0;
+	z-index: 10;
+}
+
+#header p{
+	text-align: right;
+	margin: 0; padding: 0 10px 0 0;
+}
+
+#main{
+	width: 100%;
+	z-index: 1;
+	padding: 100px 0 100px 0;
+	height: auto;
+}
+
+#footer{
+	position: fixed;
+	width: 100%;
+	background-color: #a22041;
+	color: #ffffff;
+	margin:0; padding: 0;
+	text-align: center;
+	bottom: 0;
+	z-index: 10;
+}
+
+h1{
+	margin:0;
+	padding:5px 0 0 0
+}
