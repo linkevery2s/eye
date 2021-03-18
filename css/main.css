@@ -44,3 +44,27 @@ h1{
 	margin:0;
 	padding:5px 0 0 0
 }
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+li {
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+	/*background: linear-gradient(#5882FA, #0040FF);
+	background: -webkit-linear-gradient(#5882FA, #0040FF);
+	background: -moz-linear-gradient(#5882FA, #0040FF);
+	border-radius: 5px;
+	-webkit-border-radius: 5px;	
+	-moz-border-radius: 5px;	Firefox用 */
+	width: 23%;
+}
+.menu {
+	text-align: center;
+}
+.menu li {
+	display: inline-block;
+}
