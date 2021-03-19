@@ -6,37 +6,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>EYE</title>
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/botui.min.css" />
+    <link rel="stylesheet" href="css/botui-theme-default.css" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="shortcut icon" href="images/apple-touch-icon.png">
     <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
   </head>
-  <body onload="ini();">
+  <body>
 
 	<div id="header">
 	<h1><i class="fa fa-cubes"></i> ＥＹＥ <i class="fas fa-cubes"></i></h1>
 	<p>- 防災アシスタント</p>
 	</div>
+	<div id ="mainsub"><a href="javascript:void(0);" onclick="rss();">更新情報</a> <a href="javascript:void(0);" onclick="rule();">利用規約</a></div>
+	
+	<div id="main">
+	
+	<!-- チャットボット -->
+	<div class="botui-app-container" id="bs_chat">
+		<bot-ui></bot-ui>
+    </div>
 
-	<div id="main"></div>
+
+    <!-- 演習 -->
+    <div id="practice">
+    	<h2>演習</h2>
+	</div>
+
+	<!-- 使い方 -->
+    <div id="manual">
+    	<h2>使い方</h2>
+	</div>
+	
+	<!-- 問合せ -->
+    <div id="question">
+    	<h2>問合せ</h2>
+	</div>
+
+	<!-- 利用規約 -->
+	<div id ="rule">
+		<h2>利用規約</h2>
+	</div>
+	
+	<!-- 更新情報 -->
+	<div id="rss">
+		<h2>更新情報</h2>
+	</div>
+	
+	
+	</div><!-- main -->
 
 
 
-	<div id ="mainsub"><a href="#">更新情報</a> <a href="#">利用規約</a></div>
+
     <div id="footer">
 	<ul class="menu">
-		<li><span class="list" onclick="ini();"><i class="fa fa-home"></i><br>
-		ホーム</span></li>
-		<li><span class="list" onclick="rss();"><i class="fa fa-pencil-alt"></i><br>
+		<li><span class="list" onclick="ini();"><i class="fa fa-search"></i><br>
+		聞　く</span></li>
+		<li><span class="list" onclick="practice();"><i class="fa fa-pencil-alt"></i><br>
 		演　習</span></li>
-		<li><span class="list" onclick="rule();"><i class="fa fa-book"></i><br>
+		<li><span class="list" onclick="manual();"><i class="fa fa-book"></i><br>
 		使い方</span></li>
-		<li><span class="list" onclick="share();"><i class="fa fa-envelope"></i><br>
-		要　望</span></li>
+		<li><span class="list" onclick="question();"><i class="fa fa-envelope"></i><br>
+		問合せ</span></li>
 	</ul>
 	&copy;仁志
 	</div>
 
+	<script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
+	<script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/botui.min.js"></script>
+    <script src="js/eye.js"></script>
   </body>
 </html>
