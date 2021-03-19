@@ -5,66 +5,36 @@
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>EYE</title>
-    <link rel="stylesheet" href="css/botui.min.css" />
-    <link rel="stylesheet" href="css/botui-theme-default.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
   </head>
-  <body>
+  <body onload="ini();">
+
 	<div id="header">
 	<h1><i class="fa fa-cubes"></i> ＥＹＥ <i class="fas fa-cubes"></i></h1>
 	<p>- 防災アシスタント</p>
 	</div>
 
-	<div id="main">
-	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a	aaaaa<br>
-	a
-    <div class="botui-app-container" id="bs_chat">
-      <bot-ui></bot-ui>
-    </div>
-    </div>
+	<div id="main"></div>
 
 
+
+	<div id ="mainsub"><a href="#">更新情報</a> <a href="#">利用規約</a></div>
     <div id="footer">
-
 	<ul class="menu">
-		<li><span class="list" onclick="home();"><i class="fa fa-home"></i><br>
+		<li><span class="list" onclick="ini();"><i class="fa fa-home"></i><br>
 		ホーム</span></li>
 		<li><span class="list" onclick="rss();"><i class="fa fa-pencil-alt"></i><br>
 		演　習</span></li>
 		<li><span class="list" onclick="rule();"><i class="fa fa-book"></i><br>
 		使い方</span></li>
-		<li><span class="list" onclick="share();"><i class="fa fa-question-circle"></i><br>
+		<li><span class="list" onclick="share();"><i class="fa fa-envelope"></i><br>
 		要　望</span></li>
 	</ul>
-	更新情報、利用規約、&copy;仁志
+	&copy;仁志
 	</div>
 
-
-    <script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
-    <script src="js/botui.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
