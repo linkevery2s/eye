@@ -9,28 +9,16 @@ function ini(){
 function rss(){
 	
 	$("#bs_chat").hide();
-	$("#rule").hide();
 	$("#manual").hide();
 	$("#question").hide();
 	$('#rss').fadeIn();
 	
 }
 
-function rule(){
-
-	$("#bs_chat").hide();
-	$("#rss").hide();
-	$("#manual").hide();
-	$("#question").hide();
-	$('#rule').fadeIn();
-
-}
-
 function manual(){
 
 	$("#bs_chat").hide();
 	$("#rss").hide();
-	$("#rule").hide();
 	$("#question").hide();
 	$('#manual').fadeIn();
 
@@ -41,7 +29,6 @@ function question(){
 	$("#bs_chat").hide();
 	$("#rss").hide();
 	$("#manual").hide();
-	$("#rule").hide();
 	$('#question').fadeIn();
 
 }

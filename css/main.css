@@ -9,7 +9,7 @@ html,body{
 	position: fixed;
 	width: 100%;
 	height: 80px;
-	background-color: #a22041;
+	background-color: #0f2350;
 	color: #ffffff;
 	margin:0; padding: 0;
 	text-align: center;
@@ -17,10 +17,7 @@ html,body{
 	z-index: 10;
 }
 
-#header p{
-	text-align: right;
-	margin: 0; padding: 0 10px 0 0;
-}
+
 
 #main{
 	width: 100%;
@@ -32,7 +29,7 @@ html,body{
 #footer{
 	position: fixed;
 	width: 100%;
-	background-color: #a22041;
+	background-color: #0f2350;
 	color: #ffffff;
 	margin:0; padding: 0;
 	text-align: center;
@@ -46,14 +43,14 @@ h1{
 }
 
 a {
-	border-bottom: dotted 1px #49bf9d;
+	border-bottom: dotted 1px #e9dfe5;
 	text-decoration: none;
-	color: #49bf9d
+	color: #e9dfe5;
 }
 
 a:hover {
 	border-bottom-color: transparent;
-	color: #49bf9d !important;
+	color: #e9dfe5 !important;
 	text-decoration: none;
 }
 
@@ -91,6 +88,6 @@ li {
 	top: 80px;
 }
 
-#rss, #practice, #rule, #manual, #question{
+#rss, #practice, #manual, #question{
 	display: none;
 }
