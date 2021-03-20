@@ -1,12 +1,3 @@
-function ini(){
-
-	location.reload();
-	
-	//document.getElementById('main').innerHTML = '<iframe width="100%" height="1000px" src="home/index.html" frameborder="0" id="yout"></iframe>';
-
-
-}
-
 function rss(){
 	
 	$("#bs_chat").hide();
@@ -33,3 +24,4 @@ function question(){
 	$('#question').fadeIn();
 
 }
+
