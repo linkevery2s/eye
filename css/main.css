@@ -27,7 +27,7 @@ body{
 	background-position: center center;
 	background-attachment: fixed;
 	background-size: cover;
-	background-repeat: repeat;
+	background-repeat: no-repeat;
 }
 
 #main{
