@@ -112,7 +112,7 @@ li {
 #zoom{
 	cursor: pointer;
 	background: rgba(255,255,255,0.8);
-	padding: .2em .5em .2em .5em;
+	padding: .5em;
 	border-radius: .3em;
 	margin-left: 5px;
 }
