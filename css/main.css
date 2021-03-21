@@ -22,7 +22,7 @@ html,body{
 	margin:0; padding: 0;
 }
 
-body{
+html, body{
 	background-image: url("../images/back.jpg");
 	background-position: center center;
 	background-attachment: fixed;
