@@ -1,5 +1,8 @@
 (function () {
 
+	$('#main').css('padding-top','100px');
+	$('#main').css('padding-bottom','100px');
+
 	var eyeui = new BotUI('bs_chat');
 
   //初期メッセージ
