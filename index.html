@@ -126,6 +126,14 @@
 
 $('#sns').css('display','none');
 
+$(function(){
+					setTimeout('stopload()',10000);
+				});
+ 
+				function stopload(){
+					$('#sns').css('display','block');
+				}
+
 </script>
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v10.0" nonce="mF6G9pPX"></script>
