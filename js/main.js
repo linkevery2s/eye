@@ -71,6 +71,6 @@ function listen(){
 
 function ini(){
 
-
+$('#bs_chat').fadeIn();
 
 }
