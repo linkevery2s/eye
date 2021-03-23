@@ -71,9 +71,6 @@ function listen(){
 
 function ini(){
 
-$('#sns').fadeIn();
-
-$('#sns').show();
 
 
 }
