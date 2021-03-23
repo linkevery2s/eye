@@ -4,6 +4,8 @@
 
   //初期メッセージ
   eyeui.message.bot({
+
+delay: 1000,
     content: 'EYEです。'
   }).then(init);
 
