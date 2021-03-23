@@ -68,3 +68,9 @@ function listen(){
 	document.getElementById('bs_chat').innerHTML = '<iframe width="100%" height="500px" src="home/index.html" frameborder="0" id="yout"></iframe>';
 
 }
+
+function ini(){
+
+$('#bs_chat').fadeIn();
+
+}
