@@ -96,7 +96,7 @@ li {
 	display: inline-block;
 }
 
-#rss, #practice, #manual, #question, #bs_chat, #sns{
+#rss, #practice, #manual, #question, #bs_chat{
 	display: none;
 }
 
