@@ -20,7 +20,7 @@ delay: 1000,
 		content: '知りたいことを色々と聞いてくださいね。'
 	}).then(function(){
 	
-	$('#sns').css('display','block');
+
 	});
 
   });
