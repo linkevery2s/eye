@@ -73,4 +73,7 @@ function ini(){
 
 $('#sns').fadeIn();
 
+$('#sns').show();
+
+
 }
