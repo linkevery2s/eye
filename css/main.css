@@ -118,6 +118,15 @@ max-width:600px;
 	margin-left: 5px;
 }
 
+#share{
+	cursor: pointer;
+	background: rgba(255,255,255,0.8);
+	padding: .5em;
+	border-radius: .3em;
+	right: 5px;
+}
+
+
 
 .orbit-spinner, .orbit-spinner * {
       box-sizing: border-box;
