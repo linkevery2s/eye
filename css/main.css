@@ -194,3 +194,7 @@ max-width:600px;
         transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
       }
     }
+
+.fb_iframe_widget > span {
+	vertical-align: baseline !important;
+}
