@@ -96,7 +96,7 @@ li {
 	display: inline-block;
 }
 
-#rss, #practice, #manual, #question, .inic{
+#rss, #practice, #manual, #question{
 	display: none;
 }
 
