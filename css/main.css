@@ -211,3 +211,8 @@ max-width:600px;
     animation-name: fadeIn;
     animation-duration: 3s;
 }
+
+#sns {
+    animation-name: fadeIn;
+    animation-duration: 5s;
+}
