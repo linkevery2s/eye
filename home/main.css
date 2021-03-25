@@ -5,7 +5,11 @@ height:100%;
 
 }
 
+#bs_chat{
 
+text-align: left;
+
+}
 
 .orbit-spinner, .orbit-spinner * {
       box-sizing: border-box;
