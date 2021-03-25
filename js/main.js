@@ -65,6 +65,6 @@ function listen(){
 	$("#practice").hide();
 
 	$('#bs_chat').fadeIn();
-	document.getElementById('bs_chat').innerHTML = '<iframe width="100%" height="500px" src="home/index.html" frameborder="0" id="yout"></iframe>';
+	document.getElementById('bs_chat').innerHTML = '<iframe width="100%" height="1000px" src="home/index.html" frameborder="0" id="yout"></iframe>';
 
 }
