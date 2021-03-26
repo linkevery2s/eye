@@ -246,7 +246,17 @@ max-width:600px;
 }
 
 #tweet{
-	width: 90% !important;
+width: 90% !important;
 height: 450px !important;
 overflow-y: scroll;
+}
+
+#quest{
+
+border: 1px solid #000000;
+padding: .5em;
+border-radius: .3em;
+background: #19448e;
+color: #ffffff;
+
 }
