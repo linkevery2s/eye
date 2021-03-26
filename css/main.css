@@ -60,10 +60,14 @@ h2{
 	text-align: center;
 }
 
-	hr {
-		border: dotted 1px #000000;
-		margin: 2.75rem 0;
-	}
+hr {
+	border: dotted 1px #000000;
+	margin: 2.75rem 0;
+}
+
+p {
+	margin: 0 0 2rem 0;
+}
 
 a {
 	border-bottom: dotted 1px #e9dfe5;
