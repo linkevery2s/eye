@@ -216,3 +216,7 @@ max-width:600px;
     animation-name: fadeIn;
     animation-duration: 7s;
 }
+
+#tweet{
+	width: 100% !important;
+}
