@@ -72,6 +72,19 @@ a:hover {
 	text-decoration: none;
 }
 
+.contents a{
+	border-bottom: dotted 1px #38b48b;
+	text-decoration: none;
+	color: #38b48b;
+}
+
+.contents a:hover {
+	border-bottom-color: transparent;
+	color: #38b48b !important;
+	text-decoration: none;
+}
+
+
 ul {
 	list-style-type: none;
 	padding: 0;
