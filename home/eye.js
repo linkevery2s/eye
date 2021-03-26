@@ -855,7 +855,7 @@ eyeui.message.bot({
   function end() {
     eyeui.message.bot({
       delay: 1000,
-      content: 'ご利用ありがとうございました！'
+      content: '承知しました。また聞きたいことがありましたら、「聞く」ボタンよりお尋ねくださいね！'
     })
   }
 
