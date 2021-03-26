@@ -60,6 +60,12 @@ h2{
 	text-align: center;
 }
 
+	hr {
+		border: 0;
+		border-bottom: dotted 1px #000000;
+		margin: 2.75rem 0;
+	}
+
 a {
 	border-bottom: dotted 1px #e9dfe5;
 	text-decoration: none;
