@@ -46,7 +46,7 @@ function zoom(){
 	$('#header').fadeOut();
 	$('#footer').fadeOut();
 	$('#main').css('padding-top','10px');
-	$('#main').css('padding-bottom','0');
+	$('#main').css('padding-bottom','10px');
 	zoom_channel = 1;
 	}else{
 	$('#header').fadeIn();
