@@ -61,8 +61,7 @@ h2{
 }
 
 	hr {
-		border: 0;
-		border-bottom: dotted 1px #000000;
+		border: dotted 1px #000000;
 		margin: 2.75rem 0;
 	}
 
