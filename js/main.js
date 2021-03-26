@@ -52,7 +52,7 @@ function zoom(){
 	$('#header').fadeIn();
 	$('#footer').fadeIn();
 	$('#main').css('padding-top','100px');
-	$('#main').css('padding-bottom','100px');
+	$('#main').css('padding-bottom','150px');
 	zoom_channel = 0;
 	}
 }
