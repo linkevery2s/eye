@@ -254,8 +254,8 @@ overflow-y: scroll;
 #quest{
 
 border: 1px solid #a0d8ef;
-padding: 1.5em;
-border-radius: .5em;
+padding: .5em;
+border-radius: .3em;
 background: #19448e;
 color: #ffffff;
 
