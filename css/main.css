@@ -127,12 +127,22 @@ li {
 	display: none;
 }
 
-#bs_chat, .contents{
+#bs_chat{
 	background: rgba(255,255,255,0.8);
 	width: 85%;
 max-width:600px;
 	text-align: left;
 	padding: .5em;
+	border-radius: .5em;
+margin-bottom: 20px;
+}
+
+.contents{
+background: rgba(255,255,255,0.8);
+	width: 85%;
+max-width:600px;
+	text-align: left;
+	padding: 0 10px 0 10px;
 	border-radius: .5em;
 margin-bottom: 20px;
 }
