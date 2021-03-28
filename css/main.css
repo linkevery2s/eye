@@ -264,10 +264,21 @@ overflow-y: scroll;
 
 #quest{
 
-border: 1px solid #a0d8ef;
+border: 2px solid #a0d8ef;
 padding: .5em;
 border-radius: .3em;
 background: #19448e;
 color: #ffffff;
 
+}
+
+#button{
+margin: .7em .5em .7em .5em;
+border: 2px solid #38b48b;
+padding: .5em;
+border-radius: .3em;
+background: #006e54;
+color: #ffffff;
+text-align: center;
+cursor: pointer;
 }
