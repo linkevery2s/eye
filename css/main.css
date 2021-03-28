@@ -30,6 +30,10 @@ html{
 	background-repeat: no-repeat;
 }
 
+body{
+background: rgba( 0,0,0,0.5);
+}
+
 #main{
 	width: 100%;
 	z-index: 1;
