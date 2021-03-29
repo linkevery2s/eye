@@ -40,6 +40,9 @@ overflow-y: scroll;
 body{
 background: rgba(0,0,0,0.5);
 height: 100vh;
+
+overflow-y: scroll;
+
 }
 
 #main{
