@@ -58,7 +58,7 @@ function zoom(){
 }
 
 function listen(){
-var ifh = window.outerHeight * 0.8;
+var ifh = window.outerHeight * 0.75;
 
 	$("#rss").hide();
 	$("#manual").hide();
