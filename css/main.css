@@ -141,6 +141,7 @@ max-width:600px;
 	border-radius: .5em;
 margin-bottom: 20px;
 margin-top:20px;
+position: relative;
 }
 
 .contents{
@@ -152,6 +153,7 @@ max-width:600px;
 	border-radius: .5em;
 margin-bottom: 20px;
 margin-top:20px;
+position: relative;
 }
 
 #zoom{
