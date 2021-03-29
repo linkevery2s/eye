@@ -40,6 +40,8 @@ position: fixed;
 	padding: 100px 0 110px 0;
 position: relative;
 
+overflow-y: scroll;
+
 }
 
 #footer{
