@@ -58,7 +58,7 @@ function zoom(){
 }
 
 function listen(){
-alert(window.outerHeight);
+var ifh = window.outerHeight * 0.8;
 
 	$("#rss").hide();
 	$("#manual").hide();
@@ -66,6 +66,6 @@ alert(window.outerHeight);
 	$("#practice").hide();
 
 	$('#bs_chat').fadeIn();
-	document.getElementById('bs_chat').innerHTML = '<iframe width="100%" height = "600px" src="home/index.html" frameborder="no" id="yout"></iframe>';
+	document.getElementById('bs_chat').innerHTML = '<iframe width="100%" height = "' + ifh + 'px" src="home/index.html" frameborder="no" id="yout"></iframe>';
 
 }
