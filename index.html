@@ -173,16 +173,5 @@
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v10.0" nonce="mF6G9pPX"></script>
 
-<script>
-$("iframe").on("load", function(){
-    try {
-        $(this).height(0);
-        $(this).height(this.contentWindow.document.documentElement.scrollHeight);
-    } catch (e) {
-    }
-});
-$("iframe").trigger("load");
-</script>
-
   </body>
 </html>
