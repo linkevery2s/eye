@@ -21,7 +21,7 @@ html,body{
 	margin:0; padding: 0;
 }
 
-html{
+html, body{
 	background-image: url("../images/back.jpg");
 	background-position: center center;
 	background-attachment: fixed;
@@ -32,15 +32,6 @@ position: fixed;
 		left: 0;
 		height: 100vh;
 		z-index: 1;
-
-overflow-y: scroll;
-
-}
-
-body{
-background: rgba(0,0,0,0.5);
-height: 100vh;
-
 overflow-y: scroll;
 
 }
@@ -49,9 +40,6 @@ overflow-y: scroll;
 	width: 100%;
 	z-index: 1;
 	padding: 100px 0 110px 0;
-position: relative;
-
-overflow-y: scroll;
 
 }
 
