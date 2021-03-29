@@ -5,14 +5,14 @@
 
   //初期メッセージ
   eyeui.message.bot({
-    content: 'EYEです。'
+    content: 'こんにちは！'
   }).then(init);
 
 
   function init() {
     eyeui.message.bot({
       delay: 1000,
-      content: 'どんなことが知りたいですか？'
+      content: '今日はどんなことを学びますか？'
     }).then(function() {
 
 	return eyeui.action.button({
