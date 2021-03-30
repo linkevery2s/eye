@@ -132,6 +132,7 @@ li {
 #bs_chat{
 	background: rgba(255,255,255,0.8);
 	width: 85%;
+height: 500px;
 max-width:600px;
 	text-align: left;
 	padding: .5em 0 .5em 0;
