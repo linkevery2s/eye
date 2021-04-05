@@ -69,3 +69,9 @@ var ifh = window.outerHeight * 0.75;
 	document.getElementById('bs_chat').innerHTML = '<iframe width="100%" height = "' + ifh + 'px" src="home/index.html" frameborder="no" id="yout"></iframe>';
 
 }
+
+function home(){
+
+location.href='index.html';
+
+}
