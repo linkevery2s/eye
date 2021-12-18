@@ -94,6 +94,8 @@
 
       <a href="images/header.png" data-lightbox="image-1" data-title="My caption">Image #1</a>
 
+      <a class="js-modal-open" href="">クリックでモーダルを表示</a>
+
 	</div>
 
 	<!-- 問合せ -->
@@ -163,9 +165,6 @@
 
 	</div><!-- main -->
 
-
-
-
     <div id="footer">
 	<ul class="menu">
 		<li><span class="list" onclick="home();"><i class="fa fa-home"></i><br>
@@ -179,6 +178,15 @@
 	</ul>
 	<a href="javascript:void(0);" onclick="rss();">更新情報</a> , &copy;仁志, <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">CC BY 4.0</a>
 	</div>
+
+  <!-- modal window -->
+  <div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+      <div class="modal__content"><span class="closed"><a class="js-modal-close" href="">×</a></span>
+        <p>ここにモーダルウィンドウで表示したいコンテンツを入れます。モーダルウィンドウを閉じる場合は下の「閉じる」をクリックするか、背景の黒い部分をクリックしても閉じることができます。</p>
+
+      </div><!--modal__inner-->
+  </div><!--modal-->
 
 	<script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
 	<script src="js/jquery-3.6.0.min.js"></script>
