@@ -1,11 +1,11 @@
 function rss(){
-	
+
 	$("#bs_chat").hide();
 	$("#manual").hide();
 	$("#question").hide();
-$("#practice").hide();
+  $("#share").hide();
 	$('#rss').fadeIn();
-	
+
 }
 
 function manual(){
@@ -13,7 +13,7 @@ function manual(){
 	$("#bs_chat").hide();
 	$("#rss").hide();
 	$("#question").hide();
-$("#practice").hide();
+  $("#share").hide();
 	$('#manual').fadeIn();
 
 }
@@ -23,22 +23,22 @@ function question(){
 	$("#bs_chat").hide();
 	$("#rss").hide();
 	$("#manual").hide();
-$("#practice").hide();
+  $("#share").hide();
 	$('#question').fadeIn();
 
 }
 
-function practice(){
+function share(){
 
 	$("#bs_chat").hide();
 	$("#rss").hide();
 	$("#manual").hide();
-$("#question").hide();
-	$('#practice').fadeIn();
+  $("#question").hide();
+	$('#share').fadeIn();
 
 }
 
-/* 保留 */
+/* 高さ変更 */
 var zoom_channel;
 zoom_channel = 0;
 function zoom(){
@@ -57,18 +57,18 @@ function zoom(){
 	}
 }
 
-function listen(){
+/*function listen(){
 var ifh = window.outerHeight * 0.75;
 
 	$("#rss").hide();
 	$("#manual").hide();
 	$("#question").hide();
-	$("#practice").hide();
+	$("#share").hide();
 
 	$('#bs_chat').fadeIn();
 	document.getElementById('bs_chat').innerHTML = '<iframe width="100%" height = "' + ifh + 'px" src="home/index.html" frameborder="no" id="yout"></iframe>';
 
-}
+}*/
 
 function home(){
 

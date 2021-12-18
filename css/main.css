@@ -21,20 +21,19 @@ html,body{
 	margin:0; padding: 0;
 }
 
-html, body{
+html,body{
 	background-image: url("../images/back.jpg");
-	background-position: center center;
+	background-position: center;
 	background-attachment: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 	z-index: 1;
-
 }
 
 #main{
 	width: 100%;
 	z-index: 1;
-	padding: 100px 0 140px 0;
+	padding: 80px 0 140px 0;
 
 }
 
@@ -114,7 +113,7 @@ li {
 	background: -webkit-linear-gradient(#5882FA, #0040FF);
 	background: -moz-linear-gradient(#5882FA, #0040FF);
 	border-radius: 5px;
-	-webkit-border-radius: 5px;	
+	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;	Firefox用 */
 	width: 23%;
 }
@@ -125,30 +124,30 @@ li {
 	display: inline-block;
 }
 
-#rss, #practice, #manual, #question{
+#rss, #share, #manual, #question{
 	display: none;
 }
 
 #bs_chat{
 	background: rgba(255,255,255,0.8);
 	width: 85%;
-max-width:600px;
+  max-width:600px;
 	text-align: left;
 	padding: .5em 0 .5em 0;
 	border-radius: .5em;
-margin-bottom: 20px;
-margin-top:20px;
+  margin-bottom: 20px;
+  margin-top:20px;
 }
 
 .contents{
-background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.8);
 	width: 85%;
-max-width:600px;
+  max-width:600px;
 	text-align: left;
 	padding: .5em;
 	border-radius: .5em;
-margin-bottom: 20px;
-margin-top:20px;
+  margin-bottom: 20px;
+  margin-top:20px;
 }
 
 #zoom{
@@ -156,7 +155,7 @@ margin-top:20px;
 	background: rgba(255,255,255,0.8);
 	padding: .5em;
 	border-radius: .3em;
-	margin-left: 5px;
+	margin-left: 10px;
 }
 
 #share{
@@ -254,34 +253,34 @@ margin-top:20px;
     animation-duration: 3s;
 }
 
-#sns {
+/*#sns {
     animation-name: fadeIn;
     animation-duration: 7s;
-}
+}*/
 
 #tweet{
-width: 90% !important;
-height: 450px !important;
-overflow-y: scroll;
+	width: 90% !important;
+	height: 450px !important;
+	overflow-y: scroll;
 }
 
 #quest{
 
-border: 2px solid #a0d8ef;
-padding: .5em;
-border-radius: .3em;
-background: #19448e;
-color: #ffffff;
+	border: 2px solid #a0d8ef;
+	padding: .5em;
+	border-radius: .3em;
+	background: #19448e;
+	color: #ffffff;
 
 }
 
 #button{
-margin: 1em .5em 1em .5em;
-border: 2px solid #38b48b;
-padding: .5em;
-border-radius: .3em;
-background: #006e54;
-color: #ffffff;
-text-align: center;
-cursor: pointer;
+	margin: 1em .5em 1em .5em;
+	border: 2px solid #38b48b;
+	padding: .5em;
+	border-radius: .3em;
+	background: #006e54;
+	color: #ffffff;
+	text-align: center;
+	cursor: pointer;
 }
