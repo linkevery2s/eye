@@ -248,9 +248,9 @@ li {
     }
 }
 
-#bs_chat {
+#bs_chat, #rss, #share, #manual, #question {
     animation-name: fadeIn;
-    animation-duration: 3s;
+    animation-duration: 1s;
 }
 
 /*#sns {
