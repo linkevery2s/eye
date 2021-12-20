@@ -23,7 +23,7 @@ html,body{
 
 html,body{
 	background-image: url("../images/back.jpg");
-	background-position: center;
+	background-position: center top;
 	background-attachment: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -130,7 +130,7 @@ li {
 
 #bs_chat{
 	background: rgba(255,255,255,0.8);
-	width: 85%;
+	width: 90%;
   max-width:600px;
 	text-align: left;
 	padding: .5em 0 .5em 0;
@@ -141,8 +141,8 @@ li {
 
 .contents{
   background: rgba(255,255,255,0.8);
-	width: 85%;
-  max-width:600px;
+	width: 90%;
+  max-width: 600px;
 	text-align: left;
 	padding: .5em;
 	border-radius: .5em;
@@ -302,13 +302,27 @@ li {
 .modal__content{
     background: #0597e8;
     left: 50%;
-		border: double 2px #fff;
-    padding: 30px 20px 20px 20px;
+		border: double 5px #fff;
+    padding: 35px 20px 20px 20px;
 		color: #ffffff;
     position: absolute;
     top: 50%;
     transform: translate(-50%,-50%);
-    width: 60%;
+    width: 85%;
+}
+
+.link_intro{
+	display: none;
+    background: #006e54;
+    left: 50%;
+		max-width: 500px;
+		border: double 5px #fff;
+    padding: 20px;
+		color: #ffffff;
+    position: absolute;
+    bottom: 50px;
+    transform: translate(-50%,-50%);
+    width: 50%;
 }
 
 .closed{

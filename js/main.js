@@ -1,4 +1,5 @@
 $(function(){
+    //モーダルウィンドウ
     $('.js-modal-open').on('click',function(){
         $('.js-modal').fadeIn();
         return false;
@@ -7,6 +8,16 @@ $(function(){
         $('.js-modal').fadeOut();
         return false;
     });
+    //リンク集ウィンドウ表示
+    $('.link_intro-open').on('click',function(){
+        $('.link_intro').fadeIn();
+        return false;
+    });
+    $('.link_intro-close').on('click',function(){
+        $('.link_intro').fadeOut();
+        return false;
+    });
+
 });
 
 function rss(){

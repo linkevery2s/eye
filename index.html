@@ -92,9 +92,11 @@
 
     	YouTube動画埋め込み
 
-      <a href="images/header.png" data-lightbox="image-1" data-title="My caption">Image #1</a>
+      <a href="images/header.png" data-lightbox="image-1" data-title="参考写真">Image #1</a>
 
       <a class="js-modal-open" href="">クリックでモーダルを表示</a>
+
+      <a class="link_intro-open" href="">リンク集を表示</a>
 
 	</div>
 
@@ -179,7 +181,7 @@
 	<a href="javascript:void(0);" onclick="rss();">更新情報</a> , &copy;仁志, <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">CC BY 4.0</a>
 	</div>
 
-  <!-- modal window -->
+  <!-- モーダルウィンドウ -->
   <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
       <div class="modal__content"><span class="closed"><a class="js-modal-close" href="">×</a></span>
@@ -187,6 +189,12 @@
 
       </div><!--modal__inner-->
   </div><!--modal-->
+
+
+  <div class="link_intro"><span class="closed"><a class="link_intro-close" href="">×</a></span>
+    <a href="images/header.png" data-lightbox="image-1" data-title="My caption">Image #1</a>
+  </div>
+
 
 	<script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
 	<script src="js/jquery-3.6.0.min.js"></script>
@@ -196,6 +204,12 @@
 
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v10.0" nonce="mF6G9pPX"></script>
+
+<script>
+    lightbox.option({
+      'albumLabel': "",
+    })
+</script>
 
   </body>
 </html>
