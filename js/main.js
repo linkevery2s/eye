@@ -94,10 +94,12 @@ var ifh = window.outerHeight * 0.75;
 
 function home(){
 
+  location.href = "./index.html";
+/*
 	$("#manual").hide();
 	$("#rss").hide();
 	$("#question").hide();
   $("#share").hide();
 	$('#bs_chat').fadeIn();
-
+*/
 }
