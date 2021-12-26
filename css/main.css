@@ -25,17 +25,18 @@ html, body {
 
 html {
   background-image: url("../images/back.jpg");
-
+  background-position: center top;
   background-attachment: fixed;
-
+  background-size: cover;
   background-repeat: no-repeat;
-  z-index: 1;
+  z-index: 0;
 }
 
 #main {
   width: 100%;
   z-index: 1;
   padding: 100px 0 140px 0;
+
 }
 
 #footer {
