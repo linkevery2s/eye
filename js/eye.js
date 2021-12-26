@@ -15,9 +15,9 @@ const eyeui = new BotUI('bs_chat');
 
 // キーワード
 let key;
+let mes;
 
 // カウント数
-let i;
 let max_c;
 
 (function() {
@@ -75,19 +75,19 @@ function data_catch() {
         delay: 500,
         action: [{
             text: data[0].sub,
-            value: "0"
+            value: data[0].id
           },
           {
             text: data[1].sub,
-            value: "1"
+            value: data[1].id
           },
           {
             text: data[2].sub,
-            value: "2"
+            value: data[2].id
           },
           {
             text: data[3].sub,
-            value: "3"
+            value: data[3].id
           },
           {
             text: "その他",
@@ -99,9 +99,37 @@ function data_catch() {
 
         key = res.value;
 
-        eyeui.message.bot({
+        for (let i in data) {
+          if (data[i].id.indexOf(key) != -1) {
+
+            eyeui.message.bot({
+              delay: 1000,
+              content: data[i].contents
+            }).then(function() {
+              // 参考写真があったら
+              if (!(data[i].image == "")) {
+
+                eyeui.message.bot({
+                  delay: 1000,
+                  content: "参考画像を添付します。"
+                }).then(function() {
+                  image_data.innerHTML = '<a href="images/post/' + data[i].image + '" class="intro_photo" data-lightbox="image" data-title="参考画像">参考画像</a>';
+                  $('.link_intro').fadeIn();
+                  tugi();
+                });
+
+              } else {
+                tugi();
+              }
+
+            }); /* then */
+
+          }
+        }
+
+        /*eyeui.message.bot({
           delay: 1000,
-          content: data[key].contents
+          content: mes
         }).then(function() {
           // 参考写真があったら
           if (!(data[key].image == "")) {
@@ -119,7 +147,7 @@ function data_catch() {
             tugi();
           }
 
-        });
+        });/* then */
 
       }); /* res */
 
@@ -150,4 +178,12 @@ function tugi() {
     res.value ? init() : end();
   });
 
+}
+
+//プログラムを終了する処理
+function end() {
+  eyeui.message.bot({
+    delay: 1000,
+    content: '承知しました。<br>また聞きたいことがありましたら、左下の「ホーム」ボタンよりお尋ねください。'
+  })
 }
