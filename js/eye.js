@@ -39,7 +39,9 @@ const eyeui = new BotUI('bs_chat');
       delay: 1000,
       content: '今日は何を学びますか？'
     }).then(function() {
- 
+      
+        image_data.innerHTML = "a";
+        $('.link_intro').fadeIn();
       /*eyeui.message.bot({
       	delay: 1000,
       	content: '知りたいことを色々と聞いてくださいね。'
@@ -50,7 +52,3 @@ const eyeui = new BotUI('bs_chat');
 
 
 })();/* function */
-
-function test(){
-	alert("aa");
-}
