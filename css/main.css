@@ -327,7 +327,7 @@ li {
   border: double 5px #fff;
   padding: 20px;
   color: #ffffff;
-  position: absolute;
+  position: fixed;
   bottom: 50px;
   transform: translate(-50%, -50%);
   width: 50%;
