@@ -131,7 +131,7 @@ function data_catch() {
 
         eyeui.message.bot({
           delay: 1000,
-          content: data[key].contents
+          content: data[key-1].contents
         }).then(function() {
           // 参考写真があったら
           if (!(data[key].image == "")) {
@@ -140,7 +140,7 @@ function data_catch() {
               delay: 1000,
               content: "参考画像を添付します。"
             }).then(function() {
-              image_data.innerHTML = '<a href="images/post/' + data[key].image + '" class="intro_photo" data-lightbox="image" data-title="参考画像">参考画像</a>';
+              image_data.innerHTML = '<a href="images/post/' + data[key-1].image + '" class="intro_photo" data-lightbox="image" data-title="参考画像">参考画像</a>';
               $('.link_intro').fadeIn();
               tugi();
             });
