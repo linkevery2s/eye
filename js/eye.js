@@ -20,26 +20,34 @@ let mes;
 // カウント数
 let max_c;
 
+// 定数
+let rule_count;
+rule_count = day.getMonth() + 1 + day.getDate();
+
 (function() {
 
   //挨拶文
-  if (jikan >= bg_times1 && jikan < bg_times2)
+  if (jikan >= bg_times1 && jikan < bg_times2){
+  rule_count += 4;
     eyeui.message.bot({
       delay: 1500,
       content: 'おはようございます。'
     }).then(init);
-
-  else if (jikan >= bg_times2 && jikan < bg_times3)
+}
+  else if (jikan >= bg_times2 && jikan < bg_times3){
+  rule_count += 12;
     eyeui.message.bot({
       delay: 1500,
       content: 'こんにちは。'
     }).then(init);
-  else
+  }
+  else{
+  rule_count += 20;
     eyeui.message.bot({
       delay: 1500,
       content: 'こんばんは。'
     }).then(init);
-
+  }
 })(); /* function */
 
 function init() {
@@ -70,24 +78,45 @@ function data_catch() {
       // 最大数を取得
       max_c = data.length;
 
+      if(rule_count>max_c){
+        rule_count = rule_count - max_c;
+
+      }else{}
+
+      const first = rule_count;
+      const second = rule_count + 2;
+      const third = rule_count + 4;
+      const forth = rule_count + 6;
+
+      if(second > max_c){
+        second = second - max_c;
+      }else {}
+
+      if(third > max_c){
+        third = third - max_c;
+      }else {}
+
+      if(forth > max_c){
+        forth = forth - max_c;
+      }else{}
 
       return eyeui.action.button({
         delay: 500,
         action: [{
-            text: data[0].sub,
-            value: data[0].id
+            text: data[first-1].sub,
+            value: data[first-1].id
           },
           {
-            text: data[1].sub,
-            value: data[1].id
+            text: data[second-1].sub,
+            value: data[second-1].id
           },
           {
-            text: data[2].sub,
-            value: data[2].id
+            text: data[third-1].sub,
+            value: data[third-1].id
           },
           {
-            text: data[3].sub,
-            value: data[3].id
+            text: data[forth-1].sub,
+            value: data[forth-1].id
           },
           {
             text: "その他",
