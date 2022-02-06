@@ -1,5 +1,4 @@
-[
-	{
+{
 		"id": 1,
 		"catergory": "地震",
 		"sub": "震度とマグニチュード",
@@ -152,4 +151,3 @@
 		"source": "気象庁、震度について",
 		"link": "https://www.jma.go.jp/jma/kishou/know/shindo/index.html"
 	}
-]
