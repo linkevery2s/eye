@@ -104,20 +104,20 @@ function data_catch() {
       return eyeui.action.button({
         delay: 500,
         action: [{
-            text: data[first-1].sub,
-            value: data[first-1].id
+            text: data[first].sub,
+            value: data[first].id
           },
           {
-            text: data[second-1].sub,
-            value: data[second-1].id
+            text: data[second].sub,
+            value: data[second].id
           },
           {
-            text: data[third-1].sub,
-            value: data[third-1].id
+            text: data[third].sub,
+            value: data[third].id
           },
           {
-            text: data[forth-1].sub,
-            value: data[forth-1].id
+            text: data[forth].sub,
+            value: data[forth].id
           },
           {
             text: "その他",
@@ -129,7 +129,28 @@ function data_catch() {
 
         key = res.value; console.log(key);
 
-        for (let i in data) {
+        eyeui.message.bot({
+          delay: 1000,
+          content: data[key].contents
+        }).then(function() {
+          // 参考写真があったら
+          if (!(data[key].image == "")) {
+
+            eyeui.message.bot({
+              delay: 1000,
+              content: "参考画像を添付します。"
+            }).then(function() {
+              image_data.innerHTML = '<a href="images/post/' + data[key].image + '" class="intro_photo" data-lightbox="image" data-title="参考画像">参考画像</a>';
+              $('.link_intro').fadeIn();
+              tugi();
+            });
+
+          } else {
+            tugi();
+          }
+});
+
+        /*for (let i in data) {
           if (data[i].id.indexOf(key) != -1) {
 
             eyeui.message.bot({
@@ -154,8 +175,8 @@ function data_catch() {
 
             }); /* then */
 
-          }
-        }
+          /*}
+        }*/
 
       }); /* res */
 
