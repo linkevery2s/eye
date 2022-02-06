@@ -127,7 +127,7 @@ function data_catch() {
 
       }).then(function(res) {
 
-        key = res.value;
+        key = res.value; console.log(key);
 
         for (let i in data) {
           if (data[i].id.indexOf(key) != -1) {
