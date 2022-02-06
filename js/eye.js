@@ -23,6 +23,7 @@ let max_c;
 // 定数
 let rule_count;
 rule_count = day.getMonth() + 1 + day.getDate();
+console.log(rule_count);
 
 (function() {
 
@@ -83,7 +84,7 @@ function data_catch() {
 
       }else{}
 
-      const first = rule_count;
+      const first = rule_count;console.log(first);
       const second = rule_count + 2;
       const third = rule_count + 4;
       const forth = rule_count + 6;
