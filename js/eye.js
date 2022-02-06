@@ -103,8 +103,8 @@ function data_catch() {
       return eyeui.action.button({
         delay: 500,
         action: [{
-            text: data[0].sub,
-            value: data[0].id
+            text: data[first-1].sub,
+            value: data[first-1].id
           },
           {
             text: data[second-1].sub,
