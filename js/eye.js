@@ -152,7 +152,7 @@ function data_catch() {
           content: data[key-1].contents
         }).then(function() {
           // 参考写真があったら
-          if (!(data[key].image == "")) {
+          if (!(data[key-1].image == "")) {
 
             eyeui.message.bot({
               delay: 1000,
