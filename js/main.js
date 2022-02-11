@@ -20,6 +20,13 @@ $(function(){
 
 });
 
+function disp(){
+
+  $('.js-modal').fadeIn();
+  return false;
+
+}
+
 function rss(){
 
 	$("#bs_chat").hide();

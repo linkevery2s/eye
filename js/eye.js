@@ -159,6 +159,9 @@ function data_catch() {
               content: "参考画像を添付します。"
             }).then(function() {
               image_data.innerHTML = '<a href="images/post/' + data[key-1].image + '" class="intro_photo" data-lightbox="image" data-title="参考画像">参考画像</a>';
+              //image_g.innerHTML = '<img src = "images/post/' + data[key-1].image + '" width="100%">';
+              //image_data.innerHTML = '<a class="js-modal-open" href="#">参考画像</a>';
+              //image_g.innerHTML = '<img src = "images/post/' + data[key-1].image + '" width="100%">';
               $('.link_intro').fadeIn();
               tugi();
             });
