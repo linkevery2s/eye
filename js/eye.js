@@ -72,7 +72,7 @@ function init() {
 function data_catch() {
 
   // データ取得
-  fetch('https://bseye17.netlify.app/data/output.json')
+  fetch('https://linkevery2s.github.io/eye/data/output.json')
     .then(response => response.json())
     .then(data => {
 
@@ -84,10 +84,12 @@ function data_catch() {
 
       }else{}
 
-      const first = rule_count;console.log(first);
-      const second = rule_count + 2;
-      const third = rule_count + 4;
-      const forth = rule_count + 6;
+      let first = rule_count;console.log(first);
+      let second = rule_count + 2;
+      let third = rule_count + 4;
+      let forth = rule_count + 6;
+      let fifth = rule_count + 8;
+      let sixth = rule_count + 10;
 
       if(second > max_c){
         second = second - max_c;
@@ -99,6 +101,14 @@ function data_catch() {
 
       if(forth > max_c){
         forth = forth - max_c;
+      }else{}
+
+      if(fifth > max_c){
+        fifth = fifth - max_c;
+      }else{}
+
+      if(sixth > max_c){
+        sixth = sixth - max_c;
       }else{}
 
       return eyeui.action.button({
@@ -118,6 +128,14 @@ function data_catch() {
           {
             text: data[forth].sub,
             value: data[forth].id
+          },
+          {
+            text: data[fifth].sub,
+            value: data[fifth].id
+          },
+          {
+            text: data[sixth].sub,
+            value: data[sixth].id
           },
           {
             text: "その他",
