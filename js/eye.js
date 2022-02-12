@@ -88,8 +88,8 @@ function data_catch() {
       let second = rule_count + 2;
       let third = rule_count + 4;
       let forth = rule_count + 6;
-      let fifth = rule_count + 8;
-      let sixth = rule_count + 10;
+      let fifth = rule_count + 5;
+      let sixth = rule_count + 3;
 
       if(second > max_c){
         second = second - max_c;
