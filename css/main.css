@@ -26,7 +26,14 @@ html, body {
 
 body{
 
- background: linear-gradient(to right, #4d5aaf, #ffffff);
+ /*background: linear-gradient(to right, #4d5aaf, #ffffff);*/
+
+ background-image: url("../images/back.jpg");
+ background-position: center top;
+ background-attachment: fixed;
+ /*background-size: cover;*/
+ background-repeat: repeat-y;
+ z-index: 0;
 
 }
 
