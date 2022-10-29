@@ -86,10 +86,10 @@ function data_catch() {
 
       let first = rule_count;console.log(first);
       let second = rule_count + 2;
-      let third = rule_count + 4;
-      let forth = rule_count + 6;
+      let third = rule_count + 3;
+      let forth = rule_count + 4;
       let fifth = rule_count + 5;
-      let sixth = rule_count + 3;
+      let sixth = rule_count + 6;
 
       if(second > max_c){
         second = second - max_c;

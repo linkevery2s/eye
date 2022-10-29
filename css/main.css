@@ -31,7 +31,7 @@ background: #0f2350;
  background-image: url("../images/back.jpg");
  background-position: center top;
  /*background-attachment: fixed;*/
- /*background-size: cover;*/
+ background-size: cover;
  background-repeat: repeat-y;
  z-index: 0;
 
