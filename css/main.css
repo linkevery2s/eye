@@ -338,7 +338,8 @@ li {
   padding: 20px;
   color: #ffffff;
   position: fixed;
-  bottom: 50px;
+  top: 150px;
+  /*bottom: 50px;*/
   transform: translate(-50%, -50%);
   width: 50%;
   z-index: 15;
