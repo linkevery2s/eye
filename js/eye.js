@@ -78,38 +78,43 @@ function data_catch() {
 
       // 最大数を取得
       max_c = data.length;
+      console.log(max_c);
 
       if(rule_count>max_c){
         rule_count = rule_count - max_c;
 
       }else{}
 
-      let first = rule_count;console.log(first);
+      let first = rule_count;
       let second = rule_count + 2;
       let third = rule_count + 3;
       let forth = rule_count + 4;
       let fifth = rule_count + 5;
       let sixth = rule_count + 6;
 
-      if(second > max_c){
+      console.log(first,second,third,forth,fifth,sixth);
+
+      if(second >= max_c){
         second = second - max_c;
       }else {}
 
-      if(third > max_c){
+      if(third >= max_c){
         third = third - max_c;
       }else {}
 
-      if(forth > max_c){
+      if(forth >= max_c){
         forth = forth - max_c;
       }else{}
 
-      if(fifth > max_c){
+      if(fifth >= max_c){
         fifth = fifth - max_c;
       }else{}
 
-      if(sixth > max_c){
+      if(sixth >= max_c){
         sixth = sixth - max_c;
       }else{}
+
+      console.log(first,second,third,forth,fifth,sixth);
 
       return eyeui.action.button({
         delay: 500,
@@ -136,11 +141,11 @@ function data_catch() {
           {
             text: data[sixth].sub,
             value: data[sixth].id
-          },
+          }/*,
           {
             text: "その他",
             value: "10000"
-          },
+          },*/
         ]
 
       }).then(function(res) {
