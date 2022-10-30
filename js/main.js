@@ -33,7 +33,18 @@ function rss(){
 	$("#manual").hide();
 	$("#question").hide();
   $("#share").hide();
+  $("#listen").hide();
 	$('#rss').fadeIn();
+
+}
+
+function listen(){
+	$("#bs_chat").hide();
+	$("#manual").hide();
+	$("#question").hide();
+  $("#share").hide();
+	$('#rss').hide();
+  $("#listen").fadeIn();
 
 }
 
@@ -43,6 +54,7 @@ function manual(){
 	$("#rss").hide();
 	$("#question").hide();
   $("#share").hide();
+  $("#listen").hide();
 	$('#manual').fadeIn();
 
 }
@@ -53,6 +65,7 @@ function question(){
 	$("#rss").hide();
 	$("#manual").hide();
   $("#share").hide();
+  $("#listen").hide();
 	$('#question').fadeIn();
 
 }
@@ -63,6 +76,7 @@ function share(){
 	$("#rss").hide();
 	$("#manual").hide();
   $("#question").hide();
+  $("#listen").hide();
 	$('#share').fadeIn();
 
 }
