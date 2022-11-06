@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+	<meta charset='UTF-8' name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
+	<meta name="author" content="仁志">
+	<meta name="keywords" content="防災,災害対策,雨雲レーダー,降水ナウキャスト">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+	<script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
+
+	<script type='module'>
+		onload = async () => {
+
+			const res = await fetch('https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json');
+			const data = await res.json();
+
+			let day_time = data[0].basetime;
+			let valid_time = data[0].validtime;
+			let year = day_time.slice(0, 4);
+			let month = day_time.slice(4, 6);
+			let day = day_time.slice(6, 8);
+			let jikoku_h = parseInt(day_time.slice(8, 10), 10) + 9;
+			if (jikoku_h > 23) {
+				jikoku_h = jikoku_h - 24;
+			} else {}
+
+			let jikoku_m = day_time.slice(10, 12);
+
+			time_stamp.innerHTML = year + "年" + month + "月" + day + "日" + jikoku_h + "時" + jikoku_m + "分";
+
+			let tiri = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', {
+				attribution: '&copy; <a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>'
+			});
+
+			let ame_layer = new L.tileLayer(`https://www.jma.go.jp/bosai/jmatile/data/nowc/${day_time}/none/${valid_time}/surf/hrpns/{z}/{x}/{y}.png`, {
+				opacity: 0.8,
+				attribution: "<a href='https://www.jma.go.jp/jma/kishou/know/kurashi/highres_nowcast.html'>気象庁(高解像度降水ナウキャスト)</a>"
+			});
+
+			const map = L.map('map', {
+				center: [34.624, 135.341],
+				maxZoom: 14,
+				minZoom: 4,
+				zoomControl: false,
+				zoom: 7,
+				layers: [tiri, ame_layer]
+			});
+
+			L.control.zoom({
+				position: 'topright'
+			}).addTo(map);
+
+		}
+	</script>
+
+	<style>
+		html,
+		body,
+		#map {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+		}
+
+		#time_stamp {
+			z-index: 100;
+			position: fixed;
+			left: 5px;
+			top: 5px;
+			background: rgba(255, 255, 255, 0.8);
+			padding: 5px;
+			border: 3px solid #007bbb;
+			border-radius: 10px;
+		}
+
+		#home {
+			z-index: 100;
+			position: fixed;
+			left: 5px;
+			bottom: 5px;
+			background: rgba(255, 255, 255, 0.8);
+			padding: 5px;
+			border: 3px solid #007bbb;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+
+	</style>
+
+	<title>雨雲レーダー</title>
+
+
+</head>
+
+<body>
+
+	<div id="time_stamp"></div>
+	<div id='map'></div>
+	<div id="home" onclick ="location.href='../index.html'"> <i class="fas fa-home"></i> </div>
+
+</body>
+
+</html>
