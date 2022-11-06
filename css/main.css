@@ -132,8 +132,10 @@ li {
   display: inline-block;
 }
 
-#rss, #share, #listen, #manual, #question {
+#rss, #share, #listen, #manual, #question, #back {
   display: none;
+  animation-name: fadeIn;
+  animation-duration: 1s;
 }
 
 #bs_chat {
@@ -158,12 +160,18 @@ li {
   margin-top: 20px;
 }
 
-#zoom {
+#zoom, #back {
   cursor: pointer;
   background: rgba(255, 255, 255, 0.8);
   padding: .5em;
   border-radius: .3em;
   margin-left: 10px;
+}
+
+#back{
+  position: fixed;
+  z-index: 100 !important;
+  top: 10px;
 }
 
 #share {
@@ -264,11 +272,6 @@ li {
 #bs_chat {
   animation-name: fadeIn;
   animation-duration: 3s;
-}
-
-#rss, #share, #manual, #question {
-  animation-name: fadeIn;
-  animation-duration: 1s;
 }
 
 /*#sns {
@@ -379,4 +382,15 @@ li {
 .closed a {
   text-decoration: none;
   border: none;
+}
+
+iframe {
+    margin: none;
+    padding: none;
+    border: none;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }

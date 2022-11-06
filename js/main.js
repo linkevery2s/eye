@@ -124,3 +124,21 @@ function home(){
 	$('#bs_chat').fadeIn();
 */
 }
+
+function ame(){
+
+  zoom();
+  //$("#zoom").hide();
+  document.getElementById("main").innerHTML = '<iframe width="100%" height="550px" src="practice/ame.html" border="0"></iframe>';
+
+  $('#back').fadeIn();
+  //ele.innerHTML = '<iframe width="100%" height="580px" src="practice/ame.html"></iframe>';
+
+}
+
+function back(){
+  zoom();
+  $("#listen").fadeIn();
+  $("#back").hide();
+
+}

@@ -1,44 +1,45 @@
 <!DOCTYPE HTML>
 <html lang="ja">
-  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>EYE</title>
 
-    <!-- botui -->
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/botui.min.css" />
-    <link rel="stylesheet" href="css/botui-theme-default.css" />
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>EYE</title>
 
-    <!-- lightbox -->
-    <link rel="stylesheet" href="lightbox/css/lightbox.min.css" />
-    <script src="lightbox/js/lightbox-plus-jquery.min.js"></script>
+  <!-- botui -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/botui.min.css" />
+  <link rel="stylesheet" href="css/botui-theme-default.css" />
 
-    <meta name="description" content='防災について学べるアシスタントEYEです。防災について、毎日、教えてくれます。色々と聞いてみてください。'>
-    <meta property="og:title" content="EYE -防災アシスタント" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bseye17.netlify.app/index.html" />
-    <meta property="og:image" content="https://bseye17.netlify.app/images/top.png" />
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="EYE -防災アシスタント" />
-    <meta name="twitter:description" content='防災について学べるアシスタントEYEです。防災について、毎日、教えてくれます。色々と聞いてみてください。' />
-    <meta name="twitter:image" content="https://bseye17.netlify.app/images/top.png" />
-    <meta name="author" content="仁志">
-    <meta name="keywords" content="">
+  <!-- lightbox -->
+  <link rel="stylesheet" href="lightbox/css/lightbox.min.css" />
+  <script src="lightbox/js/lightbox-plus-jquery.min.js"></script>
 
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.jpg">
-    <link rel="shortcut icon" href="images/apple-touch-icon.jpg">
-    <link rel="manifest" href="./manifest.json">
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js').then(function() {
-          console.log('Service Worker Registered');
-        });
-      }
-    </script>
-    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
-    <script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
-  </head>
+  <meta name="description" content='防災について学べるアシスタントEYEです。防災について、毎日、教えてくれます。色々と聞いてみてください。'>
+  <meta property="og:title" content="EYE -防災アシスタント" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bseye17.netlify.app/index.html" />
+  <meta property="og:image" content="https://bseye17.netlify.app/images/top.png" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EYE -防災アシスタント" />
+  <meta name="twitter:description" content='防災について学べるアシスタントEYEです。防災について、毎日、教えてくれます。色々と聞いてみてください。' />
+  <meta name="twitter:image" content="https://bseye17.netlify.app/images/top.png" />
+  <meta name="author" content="仁志">
+  <meta name="keywords" content="">
+
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.jpg">
+  <link rel="shortcut icon" href="images/apple-touch-icon.jpg">
+  <link rel="manifest" href="./manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js').then(function() {
+        console.log('Service Worker Registered');
+      });
+    }
+  </script>
+  <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+  <script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
+</head>
 
 <body>
 
@@ -57,8 +58,11 @@
     </center>
   </div>
 
+
+  <span id="back" onclick="back()"><i class="fas fa-arrow-left"></i></span>
+
   <div id="main">
-    <span id="zoom" onclick="zoom()"><i class="fas fa-expand"></i></span>
+  <span id="zoom" onclick="zoom()"><i class="fas fa-expand"></i></span>
 
     <center>
       <!-- チャットボット -->
@@ -95,7 +99,7 @@
       <div id="listen" class="contents">
         <h2><i class="fas fa-leaf"></i>　調べる　<i class="fab fa-pagelines"></i></h2>
 
-        <div id="button" onclick="location.href='practice/ame.html'">雨曇レーダー</div>
+        <div id="button" onclick="ame()">雨曇レーダー</div>
 
         <div id="button" onclick="location.href='practice/hinanplace.html'">指定緊急避難場所</div>
 
@@ -103,9 +107,9 @@
 
         <div id="button" onclick="location.href='practice/index.html'">AEDの使い方</div>
 
-      	<div id="button" onclick="location.href='practice/hinanlebel.html'">警戒レベルと避難</div>
+        <div id="button" onclick="location.href='practice/hinanlebel.html'">警戒レベルと避難</div>
 
-      	<div id="button">学校からの避難</div>
+        <div id="button">学校からの避難</div>
 
 
 
@@ -191,13 +195,13 @@
       <li><span class="list" onclick="home();"><i class="fa fa-home"></i><br>
           ホーム</span></li>
       <li><span class="list" onclick="listen();"><i class="fa fa-search"></i><br>
-              調べる</span></li>
+          調べる</span></li>
       <li><span class="list" onclick="manual();"><i class="fa fa-book"></i><br>
           使い方</span></li>
       <li><span class="list" onclick="share();"><i class="fas fa-share-alt"></i><br>
           シェア</span></li>
     </ul>
-    <a href="javascript:void(0);" onclick="rss();">更新情報</a> , <a href="javascript:void(0);" onclick="question();">問合せ</a>  ,&copy;仁志, <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">CC BY 4.0</a>
+    <a href="javascript:void(0);" onclick="rss();">更新情報</a> , <a href="javascript:void(0);" onclick="question();">問合せ</a> ,&copy;仁志, <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">CC BY 4.0</a>
   </div>
 
   <!-- モーダルウィンドウ -->
@@ -205,7 +209,7 @@
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content"><span class="closed"><a class="js-modal-close" href="">×</a></span>
 
-      <span id ="image_g"></span>
+      <span id ="ele"></span>
 
     </div>
     <!--modal__inner-->
@@ -225,7 +229,6 @@
   <script src="js/main.js"></script>
   <script src="js/botui.min.js"></script>
   <script src="js/eye.js"></script>
-  <script src="js/back.js"></script>
 
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v10.0" nonce="mF6G9pPX"></script>
