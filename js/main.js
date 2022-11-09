@@ -1,103 +1,104 @@
-$(function(){
-    //モーダルウィンドウ
-    $('.js-modal-open').on('click',function(){
-        $('.js-modal').fadeIn();
-        return false;
-    });
-    $('.js-modal-close').on('click',function(){
-        $('.js-modal').fadeOut();
-        return false;
-    });
-    //リンク集ウィンドウ表示
-    $('.link_intro-open').on('click',function(){
-        $('.link_intro').fadeIn();
-        return false;
-    });
-    $('.link_intro-close').on('click',function(){
-        $('.link_intro').fadeOut();
-        return false;
-    });
+$(function() {
+  //モーダルウィンドウ
+  $('.js-modal-open').on('click', function() {
+    $('.js-modal').fadeIn();
+    return false;
+  });
+  $('.js-modal-close').on('click', function() {
+    $('.js-modal').fadeOut();
+    return false;
+  });
+  //リンク集ウィンドウ表示
+  $('.link_intro-open').on('click', function() {
+    $('.link_intro').fadeIn();
+    return false;
+  });
+  $('.link_intro-close').on('click', function() {
+    $('.link_intro').fadeOut();
+    return false;
+  });
 
 });
 
-function disp(){
+function disp() {
 
   $('.js-modal').fadeIn();
   return false;
 
 }
 
-function rss(){
+function rss() {
 
-	$("#bs_chat").hide();
-	$("#manual").hide();
-	$("#question").hide();
+  $("#bs_chat").hide();
+  $("#manual").hide();
+  $("#question").hide();
   $("#share").hide();
   $("#listen").hide();
-	$('#rss').fadeIn();
+  $('#rss').fadeIn();
 
 }
 
-function listen(){
-	$("#bs_chat").hide();
-	$("#manual").hide();
-	$("#question").hide();
+function listen() {
+  $("#bs_chat").hide();
+  $("#manual").hide();
+  $("#question").hide();
   $("#share").hide();
-	$('#rss').hide();
+  $('#rss').hide();
   $("#listen").fadeIn();
 
 }
 
-function manual(){
+function manual() {
 
-	$("#bs_chat").hide();
-	$("#rss").hide();
-	$("#question").hide();
+  $("#bs_chat").hide();
+  $("#rss").hide();
+  $("#question").hide();
   $("#share").hide();
   $("#listen").hide();
-	$('#manual').fadeIn();
+  $('#manual').fadeIn();
 
 }
 
-function question(){
+function question() {
 
-	$("#bs_chat").hide();
-	$("#rss").hide();
-	$("#manual").hide();
+  $("#bs_chat").hide();
+  $("#rss").hide();
+  $("#manual").hide();
   $("#share").hide();
   $("#listen").hide();
-	$('#question').fadeIn();
+  $('#question').fadeIn();
 
 }
 
-function share(){
+function share() {
 
-	$("#bs_chat").hide();
-	$("#rss").hide();
-	$("#manual").hide();
+  $("#bs_chat").hide();
+  $("#rss").hide();
+  $("#manual").hide();
   $("#question").hide();
   $("#listen").hide();
-	$('#share').fadeIn();
+  $('#share').fadeIn();
 
 }
 
 /* 高さ変更 */
 var zoom_channel;
 zoom_channel = 0;
-function zoom(){
-	if(zoom_channel == 0){
-	$('#header').fadeOut();
-	$('#footer').fadeOut();
-	$('#main').css('padding-top','10px');
-	$('#main').css('padding-bottom','20px');
-	zoom_channel = 1;
-	}else{
-	$('#header').fadeIn();
-	$('#footer').fadeIn();
-	$('#main').css('padding-top','100px');
-	$('#main').css('padding-bottom','140px');
-	zoom_channel = 0;
-	}
+
+function zoom() {
+  if (zoom_channel == 0) {
+    $('#header').fadeOut();
+    $('#footer').fadeOut();
+    $('#main').css('padding-top', '10px');
+    $('#main').css('padding-bottom', '20px');
+    zoom_channel = 1;
+  } else {
+    $('#header').fadeIn();
+    $('#footer').fadeIn();
+    $('#main').css('padding-top', '100px');
+    $('#main').css('padding-bottom', '140px');
+    zoom_channel = 0;
+  }
 }
 
 /*function listen(){
@@ -113,32 +114,51 @@ var ifh = window.outerHeight * 0.75;
 
 }*/
 
-function home(){
+function home() {
 
   location.href = "./index.html";
-/*
-	$("#manual").hide();
-	$("#rss").hide();
-	$("#question").hide();
-  $("#share").hide();
-	$('#bs_chat').fadeIn();
-*/
+  /*
+  	$("#manual").hide();
+  	$("#rss").hide();
+  	$("#question").hide();
+    $("#share").hide();
+  	$('#bs_chat').fadeIn();
+  */
 }
 
-function ame(){
+function ame() {
 
   zoom();
-  //$("#zoom").hide();
-  document.getElementById("main").innerHTML = '<iframe width="100%" height="550px" src="practice/ame.html" border="0"></iframe>';
+  $("#zoom").hide();
+  $("#main").hide();
 
+  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="550px" src="practice/ame.html" border="0"></iframe>';
+
+  $("#embed_map").fadeIn();
   $('#back').fadeIn();
   //ele.innerHTML = '<iframe width="100%" height="580px" src="practice/ame.html"></iframe>';
 
 }
 
-function back(){
+function hazard() {
+
   zoom();
-  $("#listen").fadeIn();
+  $("#zoom").hide();
+  $("#main").hide();
+
+  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="550px" src="practice/hazardmap.html" border="0"></iframe>';
+
+  $("#embed_map").fadeIn();
+  $('#back').fadeIn();
+  //ele.innerHTML = '<iframe width="100%" height="580px" src="practice/ame.html"></iframe>';
+
+}
+
+function back() {
+  zoom();
   $("#back").hide();
+  $("#embed_map").hide();
+  $("#main").fadeIn();
+
 
 }

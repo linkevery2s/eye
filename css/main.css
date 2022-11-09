@@ -132,7 +132,7 @@ li {
   display: inline-block;
 }
 
-#rss, #share, #listen, #manual, #question, #back {
+#rss, #share, #listen, #manual, #question, #back, #embed_map {
   display: none;
   animation-name: fadeIn;
   animation-duration: 1s;
@@ -392,5 +392,5 @@ iframe {
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
-    z-index: 1;
+    z-index: 100;
 }
