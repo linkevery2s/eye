@@ -150,7 +150,58 @@ function hazard() {
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
-  //ele.innerHTML = '<iframe width="100%" height="580px" src="practice/ame.html"></iframe>';
+
+}
+
+function hinan() {
+
+  zoom();
+  $("#zoom").hide();
+  $("#main").hide();
+
+  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="550px" src="practice/refugemap.html" border="0"></iframe>';
+
+  $("#embed_map").fadeIn();
+  $('#back').fadeIn();
+
+}
+
+function level() {
+
+  zoom();
+  $("#zoom").hide();
+  $("#main").hide();
+
+  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="550px" src="practice/level.html" border="0"></iframe>';
+
+  $("#embed_map").fadeIn();
+  $('#back').fadeIn();
+
+}
+
+function tokai() {
+
+  zoom();
+  $("#zoom").hide();
+  $("#main").hide();
+
+  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="550px" src="practice/tokai.html" border="0"></iframe>';
+
+  $("#embed_map").fadeIn();
+  $('#back').fadeIn();
+
+}
+
+function aed() {
+
+  zoom();
+  $("#zoom").hide();
+  $("#main").hide();
+
+  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="550px" src="practice/aed.html" border="0"></iframe>';
+
+  $("#embed_map").fadeIn();
+  $('#back').fadeIn();
 
 }
 

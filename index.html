@@ -61,10 +61,10 @@
 
   <span id="back" onclick="back()"><i class="fas fa-arrow-left"></i> 戻る</span>
 
-<div id="embed_map"></div>
+  <div id="embed_map"></div>
 
   <div id="main">
-  <span id="zoom" onclick="zoom()"><i class="fas fa-expand"></i></span>
+    <span id="zoom" onclick="zoom()"><i class="fas fa-expand"></i></span>
 
     <center>
       <!-- チャットボット -->
@@ -82,36 +82,21 @@
 
       </div>
 
-
-      <!-- 演習
-    <div id="practice" class="contents">
-    	<h2><i class="fas fa-leaf"></i>　演　習　<i class="fab fa-pagelines"></i></h2>
-
-    	<div id="button" onclick="location.href='practice/index.html'">AEDの使い方</div>
-
-    	<div id="button">警戒レベルと避難</div>
-
-    	<div id="button">学校からの避難</div>
-
-    	<div id="button">VRを用いた避難訓練</div>
-
-	</div>-->
-
       <!-- 聞く -->
       <div id="listen" class="contents">
         <h2><i class="fas fa-leaf"></i>　調べる　<i class="fab fa-pagelines"></i></h2>
 
         <div id="button" onclick="ame()">雨曇レーダー</div>
 
-        <div id="button" onclick="">指定緊急避難場所</div>
+        <div id="button" onclick="hinan()">指定緊急避難場所</div>
 
         <div id="button" onclick="hazard()">ハザードマップ</div>
 
-        <div id="button" onclick="location.href='practice/index.html'">AEDの使い方</div>
+        <div id="button" onclick="aed()">AEDの使い方</div>
 
-        <div id="button" onclick="location.href='practice/hinanlebel.html'">警戒レベルと避難</div>
+        <div id="button" onclick="level()">警戒レベルと避難</div>
 
-        <div id="button">学校からの避難</div>
+        <div id="button" onclick="tokai()">東海・東南海地震 震度マップ</div>
 
 
 
@@ -211,7 +196,7 @@
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content"><span class="closed"><a class="js-modal-close" href="">×</a></span>
 
-      <span id ="ele"></span>
+      <span id="ele"></span>
 
     </div>
     <!--modal__inner-->

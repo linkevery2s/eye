@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+	<meta charset='UTF-8' name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
+	<meta name="author" content="仁志">
+	<meta name="keywords" content="防災,災害対策,東海地震,震度マップ">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+	<script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
+
+	<style>
+		html,
+		body,
+		#map {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+		}
+
+		#home {
+			z-index: 100;
+			position: fixed;
+			left: 5px;
+			bottom: 5px;
+			background: rgba(255, 255, 255, 0.8);
+			padding: 5px;
+			border: 3px solid #007bbb;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+	</style>
+
+	<script type='module'>
+		onload = async () => {
+
+			const tiri = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', {
+				attribution: '&copy; <a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>'
+			});
+
+			const tiri2 = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>'
+			});
+
+			//var baseMaps = {"全表示": tiri, "震度７": tiri2};
+
+			const tokai_layer = new L.tileLayer('https://tile.geospatial.jp/nankaitrough/sindobunpu/{z}/{x}/{y}.png', {
+				opacity: 0.8,
+				attribution: "内閣府「南海トラフの巨大地震モデル検討会」"
+			});
+
+			const tokai_layer2 = new L.tileLayer('https://tile.geospatial.jp/nankaitrough/sindobunpu/{z}/{x}/{y}.png', {
+				opacity: 0.8,
+				attribution: "内閣府「南海トラフの巨大地震モデル検討会」"
+			});
+
+			var layer1 = L.layerGroup([tiri, tokai_layer]);
+
+			var layer2 = L.layerGroup([tiri2, tokai_layer2]);
+
+			var baseMaps = {
+				"衛星写真": layer1,
+				"淡色地図": layer2
+			};
+
+			//地図を生成（初期表示の中心座標，ズームレベル，レイヤなどをオプションで設定）
+			var map = L.map('map', {
+				center: [34.791, 135.893],
+				zoom: 7,
+				layers: layer1,
+				zoomControl: false
+			});
+
+			L.control.layers(baseMaps).addTo(map);
+
+			L.control.zoom({
+				position: 'topright'
+			}).addTo(map);
+
+		}
+	</script>
+
+	<title>東海・東南海地震 震度マップ</title>
+
+</head>
+
+<body>
+	<div id="map"></div>
+
+</body>
+
+</html>

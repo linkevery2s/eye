@@ -2,10 +2,13 @@
 <html lang="ja">
 
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+	<meta charset='UTF-8' name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
+	<meta name="author" content="仁志">
+	<meta name="keywords" content="防災,災害対策,ハザードマップ">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
 	<script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
 
   <style>
@@ -32,38 +35,40 @@
     }
   </style>
 
-  <script>
-    function ini(){
-  let tiri = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', {
-    attribution: '&copy; <a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>'
-  });
+  <script type='module'>
+		onload = async () => {
 
-  let ame_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_data/{z}/{x}/{y}.png`, {
-    opacity: 0.8,
-    attribution: "<a href='https://disaportal.gsi.go.jp/hazardmap/copyright/opendata.html'>ハザードマップポータルサイト</a>"
-  });
+			let tiri = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>'
+			});
 
-  const map = L.map('map', {
-    center: [37.178, 137.263],
-    maxZoom: 14,
-    minZoom: 4,
-    zoomControl: false,
-    zoom: 6,
-    layers: [tiri, ame_layer]
-  });
+      let hazard_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_data/{z}/{x}/{y}.png`, {
+        opacity: 0.7,
+        attribution: "<a href='https://disaportal.gsi.go.jp/hazardmap/copyright/opendata.html'>ハザードマップポータルサイト</a>"
+      });
 
-  L.control.zoom({
-    position: 'topright'
-  }).addTo(map);
-}
-  </script>
+			const map = L.map('map', {
+				center: [34.624, 135.341],
+				maxZoom: 14,
+				minZoom: 4,
+				zoomControl: false,
+				zoom: 7,
+				layers: [tiri, hazard_layer]
+			});
+
+			L.control.zoom({
+				position: 'topright'
+			}).addTo(map);
+
+		}
+	</script>
+
   <title>ハザードマップ</title>
 
 </head>
 
-<body onload="ini()">
+<body>
   <div id="map"></div>
-  <!--<div id="home" onclick ="location.href='../index.html'"> <i class="fas fa-home"></i> </div>-->
 
 </body>
 
