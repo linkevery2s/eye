@@ -146,8 +146,7 @@
       <!-- 更新情報 -->
       <div id="rss" class="contents">
         <h2><i class="fas fa-leaf"></i>　開発日記　<i class="fab fa-pagelines"></i></h2>
-        <div id="day_s">2021年3月25日<br>アプリの外観のイメージが固まった。見やすく、操作しやすいGUIにしたい。この子の成長が楽しみだ。</div>        
-        <div id="day_s">2021年3月18日<br>防災チャットボットの開発に着手した。この子の名前は、EYE。どんなチャットボットに仕上がるのか、今から完成が楽しみだ。</div>
+        <div id="diary"></div>
 
         <!--<hr>
 
@@ -227,6 +226,26 @@
   <script src="js/main.js"></script>
   <script src="js/botui.min.js"></script>
   <script src="js/eye.js"></script>
+  <script type="module">
+
+  onload = async () => {
+
+    const res = await fetch('https://raw.githubusercontent.com/linkevery2s/eye/main/diary.json');
+    const data = await res.json();
+    let count = data.length;
+
+    diary.innerHTML = "";
+
+    	for (let i = 0; i < count; i++){
+          diary.innerHTML += '<div id="day_s">' + data[i].day + "<br><br>" + data[i].explanation + "</div>";
+
+      }
+
+
+
+  }
+
+  </script>
 
   <!--<div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v10.0" nonce="mF6G9pPX"></script>-->
