@@ -3,10 +3,10 @@
 const bg_times1 = 4;
 
 //昼の時間の始まり時刻
-const bg_times2 = 12;
+const bg_times2 = 11;
 
 //夜の時間の始まり時刻
-const bg_times3 = 20;
+const bg_times3 = 18;
 
 // 日にち、時刻取得
 const day = new Date();
