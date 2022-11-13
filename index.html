@@ -105,8 +105,11 @@
       <!-- 使い方 -->
       <div id="manual" class="contents">
         <h2><i class="fas fa-leaf"></i>　使い方　<i class="fab fa-pagelines"></i></h2>
+        <h3>EYEと会話しよう！</h3>
+        EYEは防災チャットボットです。毎日、防災に関する情報を教えてくれます。時間帯によって、話す内容も変わります。気になる情報があれば、タップしてみてください。用語の説明や災害対策について、時には参考画像を示しながら、様々なことを語ってくれます。<br><br>
 
-        YouTube動画埋め込み
+        <h3>調べる機能</h3>
+        雨雲レーダーや指定緊急避難場所マップ、AEDの使い方など、いざという時に役に立つ知識を身につけられるように、機能を実装しました。気になる項目について、タップしてみて下さい。
 
         <a href="images/header.png" data-lightbox="image-1" data-title="参考写真">Image #1</a>
 
@@ -142,8 +145,9 @@
 
       <!-- 更新情報 -->
       <div id="rss" class="contents">
-        <h2><i class="fas fa-leaf"></i>　更新情報　<i class="fab fa-pagelines"></i></h2>
-        2021.6.8 EYE公開
+        <h2><i class="fas fa-leaf"></i>　開発日記　<i class="fab fa-pagelines"></i></h2>
+        <div id="day_s">2021年3月25日<br>アプリの外観のイメージが固まった。見やすく、操作しやすいGUIにしたい。この子の成長が楽しみだ。</div>        
+        <div id="day_s">2021年3月18日<br>防災チャットボットの開発に着手した。この子の名前は、EYE。どんなチャットボットに仕上がるのか、今から完成が楽しみだ。</div>
 
         <!--<hr>
 
@@ -163,10 +167,17 @@
         <center>
           <span id="sns">
             <img src="images/qr.png"><br><br>
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="EYE -防災アシスタント" data-url="https://bseye17.netlify.app/index.html" data-lang="ja" data-show-count="false">Tweet</a>
+            <a href="https://twitter.com/share?url=https://linkevery2s.github.io/eye/index.html&text=EYE-防災アシスタント"><img src="images/tw.png"></a><br>
+            <a href="https://www.facebook.com/share.php?u=https://linkevery2s.github.io/eye/index.html"><img src="images/fb.png"></a><br>
+            <a href="https://line.me/R/msg/text/?https://linkevery2s.github.io/eye/index.html"><img src="images/line_button.png"></a><br>
+            <a href="mailto:?body=https://linkevery2s.github.io/eye/index.html"><img src="images/mailt.png"></a>
+
+
+            <!--<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="EYE -防災アシスタント" data-url="https://bseye17.netlify.app/index.html" data-lang="ja" data-show-count="false">Tweet</a>
 
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            <div class="fb-like" data-href="https://bseye17.netlify.app/index.html" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
+            <div class="fb-like" data-href="https://bseye17.netlify.app/index.html" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>-->
+
           </span>
         </center>
       </div>
@@ -188,7 +199,7 @@
       <li><span class="list" onclick="share();"><i class="fas fa-share-alt"></i><br>
           シェア</span></li>
     </ul>
-    <a href="javascript:void(0);" onclick="rss();">更新情報</a> , <a href="javascript:void(0);" onclick="question();">問合せ</a> ,&copy;仁志, <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">CC BY 4.0</a>
+    <a href="javascript:void(0);" onclick="rss();">開発日記</a> , <a href="javascript:void(0);" onclick="question();">問合せ</a> ,&copy;仁志, <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">CC BY 4.0</a>
   </div>
 
   <!-- モーダルウィンドウ -->
@@ -217,8 +228,8 @@
   <script src="js/botui.min.js"></script>
   <script src="js/eye.js"></script>
 
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v10.0" nonce="mF6G9pPX"></script>
+  <!--<div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v10.0" nonce="mF6G9pPX"></script>-->
 
   <script>
     <!-- lightbox2オプション設定
