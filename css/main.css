@@ -406,5 +406,11 @@ iframe {
 
 #sns a img{
   max-width: 100%;
+  margin-bottom: 10px;
 
+}
+
+#sns a{
+  border: none !important;
+  text-decoration: none !important;  
 }
