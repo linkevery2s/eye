@@ -128,6 +128,7 @@ function home() {
 
 function ame() {
   let wh = window.innerHeight;
+  console.log(wh);
 
   zoom();
   $("#zoom").hide();
