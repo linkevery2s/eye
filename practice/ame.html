@@ -20,15 +20,28 @@
 		#time_stamp {
 			z-index: 100;
 			position: fixed;
-			left: calc(50% - 110px);
+			left: calc(50% - 105px);
 			top: 10px;
-			width: 220px;
+			width: 210px;
 			text-align: center;
 			background: rgba(255, 255, 255, 0.8);
 			padding: 5px;
 			border: 3px solid #007bbb;
 			border-radius: 10px;
 		}
+
+		#update{
+		  position: fixed;
+			background: rgba(255, 255, 255, 0.8);
+		  z-index: 1000 !important;
+			padding: .5em;
+		  top: 55px;
+			left: 5px;
+		  border: 1px solid #000;
+			border-radius: .3em;
+			cursor: pointer;
+		}
+
 	</style>
 
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -79,6 +92,9 @@
 			}).addTo(map);
 
 		}
+
+
+
 	</script>
 
 
@@ -91,7 +107,7 @@
 <body>
 	<div id="time_stamp"></div>
 	<div id='map'></div>
-	<!--<div id="home" onclick ="location.href='../index.html'"> <i class="fas fa-home"></i> </div>-->
+	<div id="update" onclick ="location.href='./ame.html'">更　新</div>
 
 </body>
 

@@ -172,6 +172,7 @@ li {
   position: fixed;
   z-index: 1000 !important;
   top: 10px;
+  border: 1px solid #000;
 }
 
 #share {
@@ -412,5 +413,5 @@ iframe {
 
 #sns a{
   border: none !important;
-  text-decoration: none !important;  
+  text-decoration: none !important;
 }

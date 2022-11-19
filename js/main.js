@@ -127,12 +127,13 @@ function home() {
 }
 
 function ame() {
+  let wh = window.innerHeight;
 
   zoom();
   $("#zoom").hide();
   $("#main").hide();
 
-  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="550px" src="practice/ame.html" border="0"></iframe>';
+  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/ame.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
@@ -141,12 +142,12 @@ function ame() {
 }
 
 function hazard() {
-
+let wh = window.innerHeight;
   zoom();
   $("#zoom").hide();
   $("#main").hide();
 
-  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="550px" src="practice/hazardmap.html" border="0"></iframe>';
+  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/hazardmap.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
@@ -154,12 +155,12 @@ function hazard() {
 }
 
 function hinan() {
-
+let wh = window.innerHeight;
   zoom();
   $("#zoom").hide();
   $("#main").hide();
 
-  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="550px" src="practice/refugemap.html" border="0"></iframe>';
+  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/refugemap.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
@@ -167,12 +168,12 @@ function hinan() {
 }
 
 function level() {
-
+let wh = window.innerHeight;
   zoom();
   $("#zoom").hide();
   $("#main").hide();
 
-  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="550px" src="practice/level.html" border="0"></iframe>';
+  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/level.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
@@ -180,12 +181,12 @@ function level() {
 }
 
 function tokai() {
-
+let wh = window.innerHeight;
   zoom();
   $("#zoom").hide();
   $("#main").hide();
 
-  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="550px" src="practice/tokai.html" border="0"></iframe>';
+  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/tokai.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
@@ -193,12 +194,12 @@ function tokai() {
 }
 
 function aed() {
-
+let wh = window.innerHeight;
   zoom();
   $("#zoom").hide();
   $("#main").hide();
 
-  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="550px" src="practice/aed.html" border="0"></iframe>';
+  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/aed.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
