@@ -86,11 +86,11 @@ function data_catch() {
       }else{}
 
       let first = rule_count;
-      let second = rule_count + 2;
-      let third = rule_count + 3;
-      let forth = rule_count + 4;
-      let fifth = rule_count + 5;
-      let sixth = rule_count + 6;
+      let second = rule_count + 5;
+      let third = rule_count + 10;
+      let forth = rule_count + 15;
+      let fifth = rule_count + 20;
+      let sixth = rule_count + 25;
 
       console.log(first,second,third,forth,fifth,sixth);
 
