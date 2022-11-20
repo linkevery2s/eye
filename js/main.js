@@ -134,7 +134,7 @@ function ame() {
   $("#zoom").hide();
   $("#main").hide();
 
-  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/ame.html" border="0"></iframe>';
+  embed_map.innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/ame.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
@@ -148,7 +148,7 @@ let wh = window.innerHeight;
   $("#zoom").hide();
   $("#main").hide();
 
-  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/hazardmap.html" border="0"></iframe>';
+  embed_map.innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/hazardmap.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
@@ -161,7 +161,7 @@ let wh = window.innerHeight;
   $("#zoom").hide();
   $("#main").hide();
 
-  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/refugemap.html" border="0"></iframe>';
+  embed_map.innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/refugemap.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
@@ -174,7 +174,7 @@ let wh = window.innerHeight;
   $("#zoom").hide();
   $("#main").hide();
 
-  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/level.html" border="0"></iframe>';
+  embed_map.innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/level.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
@@ -187,7 +187,7 @@ let wh = window.innerHeight;
   $("#zoom").hide();
   $("#main").hide();
 
-  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/tokai.html" border="0"></iframe>';
+  embed_map.innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/tokai.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
@@ -200,7 +200,7 @@ let wh = window.innerHeight;
   $("#zoom").hide();
   $("#main").hide();
 
-  document.getElementById("embed_map").innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/aed.html" border="0"></iframe>';
+  embed_map.innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/aed.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
