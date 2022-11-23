@@ -2,7 +2,7 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>fullPage.js A simple Demo</title>
+	<title>災害体験談</title>
 	<meta name="author" content="Alvaro Trigo Lopez" />
 	<meta name="description" content="fullPage very simple demo." />
 	<meta name="keywords"  content="fullpage,jquery,demo,simple" />
@@ -35,7 +35,30 @@
 s
 <script type="text/javascript" src="./fullpage.js"></script>
 <script type="text/javascript">
-	var myFullpage = new fullpage('#fullpage');
+	const myFullpage = new fullpage('#fullpage');
 </script>
+
+<!--<script type="module">
+
+onload = async () => {
+
+  const res = await fetch('https://raw.githubusercontent.com/linkevery2s/eye/main/practice/data/experience.json');
+  const data = await res.json();
+
+  let text = data[0].text.split("。");
+
+  let innerdata = "";
+
+  for(let i = 0; i < text.length; i++){
+
+    innerdata += '<div class="slide">' + text[i] + "。" + "</div>"
+
+  }
+
+  ele.innerHTML = innerdata;
+
+}
+
+</script>-->
 </body>
 </html>
