@@ -13,7 +13,7 @@
 
   <style>
     .section {
-      color: #fff;
+      color: #000;
       padding: 0 1em 0 1em;
     }
 
@@ -34,9 +34,7 @@
   <div id="fullpage">
 
 
-    <div class="section active" id="section0">
-      <h3><span id="title"></span></h3>
-    </div>
+    <div class="section active" id="section0"><h3><span id="title"></span></h3></div>
     <div class="section" id="section1"><span id="text1"></span></div>
     <div class="section" id="section2"><span id="text2"></span></div>
     <div class="section" id="section3"><span id="text3"></span></div>
@@ -57,9 +55,10 @@
 
       const hash = location.hash;
 
-      const hash1 = hash.split("#");
+      const hash1 = hash.split("!");
 
       let number = hash1[1];
+      console.log(number);
 
       const res = await fetch('https://raw.githubusercontent.com/linkevery2s/eye/main/practice/data/experience.json');
       const data = await res.json();
