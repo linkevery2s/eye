@@ -441,7 +441,7 @@ iframe {
 
 .modal__content iframe{
 width: 100%;
-height: 400px;
+height: 450px;
 position: relative;
 transform: translate(0%, 0%);
 left: 0;

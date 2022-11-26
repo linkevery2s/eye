@@ -1,65 +1,78 @@
 <!DOCTYPE html>
+
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>災害体験談</title>
-	<meta name="author" content="Alvaro Trigo Lopez" />
-	<meta name="description" content="fullPage very simple demo." />
-	<meta name="keywords"  content="fullpage,jquery,demo,simple" />
-	<meta name="Resource-type" content="Document" />
+  <title>災害体験談</title>
+  <meta name="author" content="Alvaro Trigo Lopez" />
+  <meta name="description" content="fullPage very simple demo." />
+  <meta name="keywords" content="fullpage,jquery,demo,simple" />
+  <meta name="Resource-type" content="Document" />
 
-	<link rel="stylesheet" type="text/css" href="./fullpage.css" />
+  <link rel="stylesheet" type="text/css" href="./fullpage.css" />
 
-	<style>
-	.section {
-		color: #fff;
-		padding: 0 5em 0 5em;
-	}
-	html{
-		font-family: "Meiryo", "Hiragino Maru Gothic Pro", sans-serif;
-	}
-	</style>
+  <style>
+    .section {
+      color: #fff;
+      padding: 0 1em 0 1em;
+    }
+
+    html {
+      font-family: "Meiryo", "Hiragino Maru Gothic Pro", sans-serif;
+    }
+
+    #speaker {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="fullpage">
+  <div id="fullpage">
 
-	<div class="section">
-    <div class="slide active"><span id="title"></span></div>
-	    <div class="slide"><span id="text1"></span></div>
-	    <div class="slide"><span id="text2"></span></div>
-	    <div class="slide"><span id="text3"></span></div>
-	    <div class="slide"><span id="text4"></span><span id="speaker"></span></div>
-	</div>
 
-</div>
-s
-<script type="text/javascript" src="./fullpage.js"></script>
-<script type="text/javascript">
-	const myFullpage = new fullpage('#fullpage');
-</script>
+    <div class="section active" id="section0">
+      <h3><span id="title"></span></h3>
+    </div>
+    <div class="section" id="section1"><span id="text1"></span></div>
+    <div class="section" id="section2"><span id="text2"></span></div>
+    <div class="section" id="section3"><span id="text3"></span></div>
+    <div class="section" id="section4"><span id="text4"></span>
+      <div id="speaker"></div>
+    </div>
 
-<script type="module">
 
-onload = async () => {
+  </div>
+  s
+  <script type="text/javascript" src="./fullpage.js"></script>
+  <script type="text/javascript">
+    const myFullpage = new fullpage('#fullpage');
+  </script>
 
-  const res = await fetch('https://raw.githubusercontent.com/linkevery2s/eye/main/practice/data/experience.json');
-  const data = await res.json();
+  <script type="module">
+    onload = async () => {
 
-  let text = data[0].text.split("。");
+      const hash = location.hash;
 
-  let innerdata = "";
+      const hash1 = hash.split("#");
 
-  for(let i = 0; i < text.length; i++){
+      let number = hash1[1];
 
-    innerdata += '<div class="slide">' + text[i] + "。" + "</div>"
+      const res = await fetch('https://raw.githubusercontent.com/linkevery2s/eye/main/practice/data/experience.json');
+      const data = await res.json();
 
-  }
+      title.innerHTML = data[number].title;
+      text1.innerHTML = data[number].text1;
+      text2.innerHTML = data[number].text2;
+      text3.innerHTML = data[number].text3;
+      text4.innerHTML = data[number].text4;
+      speaker.innerHTML = data[number].speaker;
 
-  ele.innerHTML = innerdata;
-
-}
-
-</script>
+    }
+  </script>
 </body>
+
 </html>
