@@ -59,12 +59,6 @@ function init() {
 
     data_catch();
 
-    /*eyeui.message.bot({
-      delay: 1000,
-      content: '知りたいことを色々と聞いてくださいね。'
-    }).then(function(){
-    });*/
-
   });
 } /*init()*/
 
@@ -89,10 +83,9 @@ function data_catch() {
       let second = rule_count + 5;
       let third = rule_count + 10;
       let forth = rule_count + 15;
-      let fifth = rule_count + 20;
-      let sixth = rule_count + 25;
+      let fifth = 3;
 
-      console.log(first,second,third,forth,fifth,sixth);
+      console.log(first,second,third,forth,fifth);
 
       if(second >= max_c){
         second = second - max_c;
@@ -106,15 +99,8 @@ function data_catch() {
         forth = forth - max_c;
       }else{}
 
-      if(fifth >= max_c){
-        fifth = fifth - max_c;
-      }else{}
 
-      if(sixth >= max_c){
-        sixth = sixth - max_c;
-      }else{}
-
-      console.log(first,second,third,forth,fifth,sixth);
+      console.log(first,second,third,forth);
 
       return eyeui.action.button({
         delay: 500,
@@ -135,15 +121,11 @@ function data_catch() {
             value: data[forth].id
           },
           {
-            text: data[fifth].sub,
-            value: data[fifth].id
-          },
-          {
-            text: data[sixth].sub,
-            value: data[sixth].id
+            text: "災害体験談" + fifth,
+            value: 10000
           }/*,
           {
-            text: "その他",
+            text: "その他",'<a href="javascript:void(0)" onClick="disp()">Click!</a>'
             value: "10000"
           },*/
         ]
@@ -152,6 +134,15 @@ function data_catch() {
 
         key = res.value; console.log(key);
 
+        if(key == 10000){
+
+          eyeui.message.bot({
+            delay: 1000,
+            content: 'こちら↓から読むことができます。<br><a href="javascript:void(0)" onClick="disp(' + fifth + ')">災害体験談' + fifth +'</a>'
+          }).then(tugi());
+
+        }
+        else{
         eyeui.message.bot({
           delay: 1000,
           content: data[key-1].contents
@@ -174,35 +165,8 @@ function data_catch() {
           } else {
             tugi();
           }
-});
-
-        /*for (let i in data) {
-          if (data[i].id.indexOf(key) != -1) {
-
-            eyeui.message.bot({
-              delay: 1000,
-              content: data[i].contents
-            }).then(function() {
-              // 参考写真があったら
-              if (!(data[i].image == "")) {
-
-                eyeui.message.bot({
-                  delay: 1000,
-                  content: "参考画像を添付します。"
-                }).then(function() {
-                  image_data.innerHTML = '<a href="images/post/' + data[i].image + '" class="intro_photo" data-lightbox="image" data-title="参考画像">参考画像</a>';
-                  $('.link_intro').fadeIn();
-                  tugi();
-                });
-
-              } else {
-                tugi();
-              }
-
-            }); /* then */
-
-          /*}
-        }*/
+        });
+      }
 
       }); /* res */
 

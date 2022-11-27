@@ -20,7 +20,9 @@ $(function() {
 
 });
 
-function disp() {
+function disp(x) {
+
+  exp.innerHTML = '<iframe src="practice/experience.html#!' + x + '"></iframe>';
 
   $('.js-modal').fadeIn();
   return false;
