@@ -91,16 +91,21 @@ function data_catch() {
         second = second - max_c;
       }else {}
 
-      if(third >= max_c){
-        third = third - max_c;
-      }else {}
+      /* 備蓄の最初のid番号を取得する */
+      let bitiku_id;
+      for(let j in data){
+        if(data[j].category.indexOf("備蓄") != -1) {
+          bitiku_id = data[j].id;
+          break;
+        }
+      }
 
-      if(forth >= max_c){
-        forth = forth - max_c;
-      }else{}
+      console.log(bitiku_id);
 
 
-      console.log(first,second,third,forth);
+
+
+      console.log(first,second);
 
       return eyeui.action.button({
         delay: 500,
