@@ -20,30 +20,27 @@ let mes;
 // カウント数
 let max_c;
 
-// 定数
-let rule_count;
-rule_count = day.getMonth() + 1 + day.getDate();
-console.log(rule_count);
+
 
 (function() {
 
   //挨拶文
   if (jikan >= bg_times1 && jikan < bg_times2){
-  rule_count += 4;
+
     eyeui.message.bot({
       delay: 1500,
       content: 'おはようございます。'
     }).then(init);
 }
   else if (jikan >= bg_times2 && jikan < bg_times3){
-  rule_count += 12;
+
     eyeui.message.bot({
       delay: 1500,
       content: 'こんにちは。'
     }).then(init);
   }
   else{
-  rule_count += 20;
+
     eyeui.message.bot({
       delay: 1500,
       content: 'こんばんは。'
@@ -65,6 +62,22 @@ function init() {
 
 function data_catch() {
 
+  // 定数
+  let rule_count = "";
+  rule_count = day.getMonth() + 1 + day.getDate();
+
+  if (jikan >= bg_times1 && jikan < bg_times2){
+  rule_count += 2;
+}
+  else if (jikan >= bg_times2 && jikan < bg_times3){
+  rule_count += 6;
+  }
+  else{
+  rule_count += 10;
+
+  }
+console.log("この時間の定数は、" + rule_count);
+
   // データ取得
   fetch('https://linkevery2s.github.io/eye/data/output.json')
     .then(response => response.json())
@@ -72,40 +85,98 @@ function data_catch() {
 
       // 最大数を取得
       max_c = data.length;
-      console.log(max_c);
-
-      if(rule_count>max_c){
-        rule_count = rule_count - max_c;
-
-      }else{}
-
-      let first = rule_count;
-      let second = rule_count + 5;
-      let third = rule_count + 10;
-      let forth = rule_count + 15;
-      let fifth = 3;
-
-      console.log(first,second,third,forth,fifth);
-
-      if(second >= max_c){
-        second = second - max_c;
-      }else {}
+      console.log("最大個数は、" + max_c);
 
       /* 備蓄の最初のid番号を取得する */
       let bitiku_id;
-      for(let j in data){
-        if(data[j].category.indexOf("備蓄") != -1) {
-          bitiku_id = data[j].id;
+      for(let x in data){
+        if(data[x].category.indexOf("備蓄") != -1) {
+          bitiku_id = data[x].id;
           break;
         }
       }
 
-      console.log(bitiku_id);
+      /* 避難方法の最初のid番号を取得する */
+      let hinan_id;
+      for(let y in data){
+        if(data[y].category.indexOf("避難方法") != -1) {
+          hinan_id = data[y].id;
+          break;
+        }
+      }
 
+      /* 災害体験談の最初のid番号を取得する */
+      let st_id;
+      for(let z in data){
+        if(data[z].category.indexOf("災害体験談") != -1) {
+          st_id = data[z].id;
+          break;
+        }
+      }
 
+      console.log("備蓄、避難方法、災害体験談のidは、" + bitiku_id, hinan_id, st_id);
 
+      let tisiki_count = bitiku_id - 1;
 
-      console.log(first,second);
+      let bitiku_count = hinan_id - bitiku_id + 1;
+
+      let hinan_count = st_id - hinan_id + 1;
+
+      let st_count = max_c - st_id + 1;
+
+      console.log("知識、備蓄、避難方法、災害体験談の個数は、" + tisiki_count,bitiku_count, hinan_count, st_count);
+
+      /* 防災知識 */
+      if(rule_count> tisiki_count){
+
+        rule_count = rule_count - tisiki_count;
+
+      }else{}
+
+      let first = rule_count;
+
+      let second = first + 5;
+
+      if(second> tisiki_count){
+        second = second - tisiki_count;
+
+      }else{}
+
+      console.log("防災知識のidは、" + first,second);
+
+      /* 備蓄 */
+      if(rule_count> bitiku_count){
+
+        rule_count = rule_count - bitiku_count;
+
+      }else{}
+
+      let third = Number(bitiku_id) + rule_count -1;
+
+      console.log("備蓄idは、" + third);
+
+      /* 避難方法 */
+      if(rule_count> hinan_count){
+
+        rule_count = rule_count - hinan_count;
+
+      }else{}
+
+      let forth = Number(hinan_id) + rule_count -1;
+
+      console.log("避難方法idは、" + forth);
+
+      /* 鰓蓋体験談 */
+      if(rule_count> st_count){
+
+        rule_count = rule_count - st_count;
+
+      }else{}
+
+      let fifth = Number(st_id) + rule_count -1;
+
+      console.log("災害体験談idは、" + fifth);
+
 
       return eyeui.action.button({
         delay: 500,
@@ -114,19 +185,19 @@ function data_catch() {
             value: data[first].id
           },
           {
-            text: data[second].sub,
-            value: data[second].id
+            text: data[second-1].sub,
+            value: data[second-1].id
           },
-          {
-            text: data[third].sub,
-            value: data[third].id
+          {/* 備蓄 */
+            text: data[third-1].sub,
+            value: data[third-1].id
           },
-          {
-            text: data[forth].sub,
-            value: data[forth].id
+          {/* 避難方法 */
+            text: data[forth-1].sub,
+            value: data[forth-1].id
           },
-          {
-            text: "災害体験談" + fifth,
+          {/* 災害体験談 */
+            text: "災害体験談" + data[fifth - 5].contents,
             value: 10000
           }/*,
           {
@@ -143,7 +214,7 @@ function data_catch() {
 
           eyeui.message.bot({
             delay: 1000,
-            content: 'こちら↓から読むことができます。<br><a href="javascript:void(0)" onClick="disp(' + fifth + ')">災害体験談' + fifth +'</a>'
+            content: 'こちら↓から読むことができます。<br><a href="javascript:void(0)" onClick="disp(' + data[fifth - 5].contents + ')">災害体験談' + data[fifth - 5].contents +'</a><br>※縦スクロールで物語が続いていきます。'
           }).then(tugi());
 
         }
@@ -157,13 +228,13 @@ function data_catch() {
 
             eyeui.message.bot({
               delay: 1000,
-              content: "参考画像を添付します。"
+              content: "参考画像を添付します。<br>" + '<a href="images/post/' + data[key-1].image + '" class="intro_photo" data-lightbox="image" data-title="参考画像">参考画像</a>'
             }).then(function() {
-              image_data.innerHTML = '<a href="images/post/' + data[key-1].image + '" class="intro_photo" data-lightbox="image" data-title="参考画像">参考画像</a>';
+              //image_data.innerHTML = '<a href="images/post/' + data[key-1].image + '" class="intro_photo" data-lightbox="image" data-title="参考画像">参考画像</a>';
               //image_g.innerHTML = '<img src = "images/post/' + data[key-1].image + '" width="100%">';
               //image_data.innerHTML = '<a class="js-modal-open" href="#">参考画像</a>';
               //image_g.innerHTML = '<img src = "images/post/' + data[key-1].image + '" width="100%">';
-              $('.link_intro').fadeIn();
+              //$('.link_intro').fadeIn();
               tugi();
             });
 
