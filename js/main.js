@@ -20,7 +20,7 @@ $(function() {
 
 });
 
-function disp(x) {
+let disp = x => {
 
   exp.innerHTML = '<iframe src="practice/experience.html#!' + x + '"></iframe>';
 
@@ -29,7 +29,16 @@ function disp(x) {
 
 }
 
-function rss() {
+let disp2 = x => {
+
+  exp.innerHTML = '<iframe src="practice/refugeway.html"></iframe>';
+
+  $('.js-modal').fadeIn();
+  return false;
+
+}
+
+let rss = () => {
 
   $("#bs_chat").hide();
   $("#manual").hide();
@@ -40,7 +49,7 @@ function rss() {
 
 }
 
-function listen() {
+let listen = () => {
   $("#bs_chat").hide();
   $("#manual").hide();
   $("#question").hide();
@@ -50,7 +59,7 @@ function listen() {
 
 }
 
-function manual() {
+let manual = () => {
 
   $("#bs_chat").hide();
   $("#rss").hide();
@@ -61,7 +70,7 @@ function manual() {
 
 }
 
-function question() {
+let question = () => {
 
   $("#bs_chat").hide();
   $("#rss").hide();
@@ -72,7 +81,7 @@ function question() {
 
 }
 
-function share() {
+let share = () => {
 
   $("#bs_chat").hide();
   $("#rss").hide();
@@ -84,10 +93,10 @@ function share() {
 }
 
 /* 高さ変更 */
-var zoom_channel;
+let zoom_channel;
 zoom_channel = 0;
 
-function zoom() {
+let zoom = () => {
   if (zoom_channel == 0) {
     $('#header').fadeOut();
     $('#footer').fadeOut();
@@ -103,20 +112,7 @@ function zoom() {
   }
 }
 
-/*function listen(){
-var ifh = window.outerHeight * 0.75;
-
-	$("#rss").hide();
-	$("#manual").hide();
-	$("#question").hide();
-	$("#share").hide();
-
-	$('#bs_chat').fadeIn();
-	document.getElementById('bs_chat').innerHTML = '<iframe width="100%" height = "' + ifh + 'px" src="home/index.html" frameborder="no" id="yout"></iframe>';
-
-}*/
-
-function home() {
+let home = () => {
 
   location.href = "./index.html";
   /*
@@ -128,7 +124,7 @@ function home() {
   */
 }
 
-function ame() {
+let ame = () => {
   let wh = window.innerHeight;
   console.log(wh);
 
@@ -140,11 +136,10 @@ function ame() {
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
-  //ele.innerHTML = '<iframe width="100%" height="580px" src="practice/ame.html"></iframe>';
 
 }
 
-function hazard() {
+let hazard = () => {
 let wh = window.innerHeight;
   zoom();
   $("#zoom").hide();
@@ -157,7 +152,7 @@ let wh = window.innerHeight;
 
 }
 
-function hinan() {
+let hinan = () => {
 let wh = window.innerHeight;
   zoom();
   $("#zoom").hide();
@@ -170,7 +165,7 @@ let wh = window.innerHeight;
 
 }
 
-function level() {
+let level = () => {
 let wh = window.innerHeight;
   zoom();
   $("#zoom").hide();
@@ -183,7 +178,7 @@ let wh = window.innerHeight;
 
 }
 
-function tokai() {
+let tokai = () => {
 let wh = window.innerHeight;
   zoom();
   $("#zoom").hide();
@@ -196,7 +191,7 @@ let wh = window.innerHeight;
 
 }
 
-function aed() {
+let aed = () => {
 let wh = window.innerHeight;
   zoom();
   $("#zoom").hide();
@@ -209,11 +204,10 @@ let wh = window.innerHeight;
 
 }
 
-function back() {
+let back = () => {
   zoom();
   $("#back").hide();
   $("#embed_map").hide();
   $("#main").fadeIn();
-
 
 }

@@ -60,7 +60,7 @@ function init() {
 } /*init()*/
 
 
-function data_catch() {
+let data_catch = () => {
 
   // 定数
   let rule_count = "";
@@ -164,6 +164,12 @@ console.log("この時間の定数は、" + rule_count);
 
       let forth = Number(hinan_id) + rule_count -1;
 
+      if(forth> hinan_count){
+
+        forth = Number(hinan_id) + 10;
+
+      }else{}
+
       console.log("避難方法idは、" + forth);
 
       /* 鰓蓋体験談 */
@@ -194,7 +200,7 @@ console.log("この時間の定数は、" + rule_count);
           },
           {/* 避難方法 */
             text: data[forth-1].sub,
-            value: data[forth-1].id
+            value: 9999
           },
           {/* 災害体験談 */
             text: "災害体験談" + data[fifth - 5].contents,
@@ -218,6 +224,15 @@ console.log("この時間の定数は、" + rule_count);
           }).then(tugi());
 
         }
+        else if(key == 9999){
+
+          eyeui.message.bot({
+            delay: 1000,
+            content: 'こちら↓から読むことができます。<br><a href="javascript:void(0)" onClick="disp2()">避難方法' + '</a><br>※縦スクロールで物語が続いていきます。'
+          }).then(tugi());
+
+        }
+
         else{
         eyeui.message.bot({
           delay: 1000,
@@ -251,7 +266,7 @@ console.log("この時間の定数は、" + rule_count);
 } /* data_catch() */
 
 /* 質問をループさせる */
-function tugi() {
+let tugi = () => {
 
   eyeui.message.bot({
     delay: 1500,
@@ -260,7 +275,7 @@ function tugi() {
     return eyeui.action.button({
       delay: 1000,
       action: [{
-        icon: 'circle-thin',
+        icon: 'android',
         text: 'はい',
         value: true
       }, {
@@ -276,7 +291,7 @@ function tugi() {
 }
 
 //プログラムを終了する処理
-function end() {
+let end = () => {
   eyeui.message.bot({
     delay: 1000,
     content: '承知しました。<br>また聞きたいことがありましたら、左下の「ホーム」ボタンよりお尋ねください。'

@@ -360,8 +360,8 @@ li {
 
 .closed {
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: 0px;
+  top: -40px;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -445,5 +445,4 @@ height: 450px;
 position: relative;
 transform: translate(0%, 0%);
 left: 0;
-
 }
