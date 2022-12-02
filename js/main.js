@@ -39,7 +39,9 @@ let disp2 = x => {
 }
 
 let rss = () => {
-
+  $('body,html').animate({
+    scrollTop: $("#main").offset().top
+  }, 0);
   $("#bs_chat").hide();
   $("#manual").hide();
   $("#question").hide();
@@ -50,6 +52,9 @@ let rss = () => {
 }
 
 let listen = () => {
+  $('body,html').animate({
+    scrollTop: $("#main").offset().top
+  }, 0);
   $("#bs_chat").hide();
   $("#manual").hide();
   $("#question").hide();
@@ -60,7 +65,9 @@ let listen = () => {
 }
 
 let manual = () => {
-
+  $('body,html').animate({
+    scrollTop: $("#main").offset().top
+  }, 0);
   $("#bs_chat").hide();
   $("#rss").hide();
   $("#question").hide();
@@ -71,7 +78,9 @@ let manual = () => {
 }
 
 let question = () => {
-
+  $('body,html').animate({
+    scrollTop: $("#main").offset().top
+  }, 0);
   $("#bs_chat").hide();
   $("#rss").hide();
   $("#manual").hide();
@@ -82,7 +91,9 @@ let question = () => {
 }
 
 let share = () => {
-
+  $('body,html').animate({
+    scrollTop: $("#main").offset().top
+  }, 0);
   $("#bs_chat").hide();
   $("#rss").hide();
   $("#manual").hide();
