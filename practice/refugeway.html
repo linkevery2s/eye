@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="ja">
+
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +10,50 @@
       padding: 0 1em 0 1em;
     }
 
-    html {
-      font-family: "Meiryo", "Hiragino Maru Gothic Pro", sans-serif !important;
+    html,body {
+      margin: 0;
+      padding: 0;
     }
+
+    body {
+      background: #000;
+      background-image: url("../images/elevator.jpg");
+      background-position: center top;
+      background-size: cover;
+      background-repeat: no-repeat;
+}
+    .textScreen {
+      font-family: "Meiryo", "Hiragino Maru Gothic Pro", sans-serif;
+      margin: 54vh .2em .2em .2em;
+      border: 3px solid white;
+      background-color: black;
+      border-radius: 0.3em;
+      padding: .3em;
+      height: 180px;
+      font-size: 1.2em !important;
+      bottom: 0 !important;
+      transform: translate(0%, 0%);
+    }
+
+#footer{
+  position: fixed;
+  width: 100%;
+  background-color: #000;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  bottom: 0;
+  z-index: 10;
+  height: 28px;
+}
+
+#footer a{
+  text-decoration: none;
+  border-bottom: 1px dotted #fff;
+  color: #fff;
+}
+
   </style>
   <title>地震時の避難方法</title>
 
@@ -23,14 +65,13 @@
     import {
       bg,
       show
-    } from "https://code4fukui.github.io/egadv/egadv.js";
-
+    } from "https://js.sabae.cc/egadv.js";
 
     const res = await fetch('https://raw.githubusercontent.com/linkevery2s/eye/main/practice/data/refuge.json');
     const data = await res.json();
 
 
-    await bg(2892);
+    //await bg(2892);
     await show(data[0].place);
 
     let flg = false;
@@ -63,6 +104,8 @@
       await show("THE END?");
     }
   </script>
+
+  <div id="footer"><a href="https://github.com/code4fukui/egadv" target="_blank">egadv</a>, <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">CC BY 4.0</a></div>
 </body>
 
 </html>
