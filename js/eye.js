@@ -228,7 +228,7 @@ console.log("この時間の定数は、" + rule_count);
 
           eyeui.message.bot({
             delay: 1000,
-            content: 'こちら↓から読むことができます。<br><a href="javascript:void(0)" onClick="disp2()">避難方法' + '</a><br>※ノベルゲームとして学べます。'
+            content: 'こちら↓から読むことができます。<br><a href="javascript:void(0)" onClick="disp2()">避難方法' + '</a><br>※縦スクロールで物語が続いていきます。'
           }).then(tugi());
 
         }
@@ -275,9 +275,11 @@ let tugi = () => {
     return eyeui.action.button({
       delay: 1000,
       action: [{
+        icon: 'android',
         text: 'はい',
         value: true
       }, {
+        icon: 'close',
         text: 'いいえ',
         value: false
       }]
