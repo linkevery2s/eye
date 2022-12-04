@@ -31,7 +31,7 @@ let disp = x => {
 
 let disp2 = x => {
 
-  exp.innerHTML = '<iframe src="practice/refugeway.html"></iframe>';
+  exp.innerHTML = '<iframe src="practice/refugeway.html#!' + x + '"></iframe>';
 
   $('.js-modal').fadeIn();
   return false;

@@ -10,18 +10,20 @@
       padding: 0 1em 0 1em;
     }
 
-    html,body {
+    html,
+    body {
       margin: 0;
       padding: 0;
     }
 
     body {
       background: #000;
-      background-image: url("../images/elevator.jpg");
+      //background-image: url("../images/elevator.jpg");
       background-position: center top;
       background-size: cover;
       background-repeat: no-repeat;
-}
+    }
+
     .textScreen {
       font-family: "Meiryo", "Hiragino Maru Gothic Pro", sans-serif;
       margin: 54vh .2em .2em .2em;
@@ -29,32 +31,31 @@
       background-color: black;
       border-radius: 0.3em;
       padding: .3em;
-      height: 160px;
+      height: 170px;
       font-size: 1.2em !important;
       bottom: 0 !important;
       transform: translate(0%, 0%);
     }
 
-#footer{
-  position: fixed;
-  width: 100%;
-  background-color: #000;
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
-  bottom: 0;
-  z-index: 10;
-  height: 28px;
-  text-align: right;
+    #footer {
+      position: fixed;
+      width: 100%;
+      background-color: #000;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      bottom: 0;
+      z-index: 10;
+      height: 28px;
+      text-align: right;
 
-}
+    }
 
-#footer a{
-  text-decoration: none;
-  border-bottom: 1px dotted #fff;
-  color: #fff;
-}
-
+    #footer a {
+      text-decoration: none;
+      border-bottom: 1px dotted #fff;
+      color: #fff;
+    }
   </style>
   <title>地震時の避難方法</title>
 
@@ -68,42 +69,32 @@
       show
     } from "https://js.sabae.cc/egadv.js";
 
+    const hash = location.hash;
+
+    const hash1 = hash.split("!");
+
+    let number = hash1[1];
+    console.log(number);
+    number = number - 1;
+
     const res = await fetch('https://raw.githubusercontent.com/linkevery2s/eye/main/practice/data/refuge.json');
     const data = await res.json();
 
+    const max = Object.keys(data[number]).length - 3;
 
-    //await bg(2892);
-    await show(data[0].place);
+    console.log(max);
 
-    let flg = false;
-    for (;;) {
-      const n = await show("どこへいこう？", ["山", "川", "丘", "帰る"]);
-      if (n == "山") {
-        await bg(658);
-        await show("山についた");
-        await show("HPが10、回復した");
-      } else if (n == "川") {
-        await bg(1855);
-        await show("川についた");
-        await show("MPが5、回復した");
-      } else if (n == "丘") {
-        await bg(23);
-        await show("おー、花火だ");
-        flg = true;
-      } else {
-        break;
-      }
+    /* 背景画像変更 */
+    document.body.style.backgroundImage = "url(img/" + data[number].id + ".jpg)";
+
+    await show(data[number].place);
+    await show(data[number].rule);
+
+    for (let j = 1; j < max + 1; j++) {
+      await show(data[number]["point" + j]);
     }
-    if (flg) {
-      await bg(2583);
-      await show("充実した一日だった");
-      await show("おやすみ");
-      await show("HAPPY END");
-    } else {
-      await bg(3180);
-      await show("何か見落としているような・・・");
-      await show("THE END?");
-    }
+
+    await show("END");
   </script>
 
   <div id="footer">&copy; <a href="https://github.com/code4fukui/egadv" target="_blank">egadv</a>, <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">CC BY 4.0</a>　</div>

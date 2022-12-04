@@ -172,7 +172,7 @@ console.log("この時間の定数は、" + rule_count);
 
       console.log("避難方法idは、" + forth);
 
-      /* 鰓蓋体験談 */
+      /* 災害体験談 */
       if(rule_count> st_count){
 
         rule_count = rule_count - st_count;
@@ -228,7 +228,7 @@ console.log("この時間の定数は、" + rule_count);
 
           eyeui.message.bot({
             delay: 1000,
-            content: 'こちら↓から読むことができます。<br><a href="javascript:void(0)" onClick="disp2()">避難方法' + '</a><br>※ノベルゲームとして学べます。'
+            content: 'こちら↓から読むことができます。<br><a href="javascript:void(0)" onClick="disp2(' + data[forth - 1].contents + ')">' + data[forth-1].sub + '</a><br>※ノベルゲームとして学べます。'
           }).then(tugi());
 
         }
