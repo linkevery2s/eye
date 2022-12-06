@@ -162,13 +162,13 @@ console.log("この時間の定数は、" + rule_count);
 
       }else{}
 
+      if(rule_count> hinan_count){
+
+        rule_count = rule_count - hinan_count;
+
+      }else{}      
+
       let forth = Number(hinan_id) + rule_count -1;
-
-      if(forth> hinan_count){
-
-        forth = Number(hinan_id) + 10;
-
-      }else{}
 
       console.log("避難方法idは、" + forth);
 
