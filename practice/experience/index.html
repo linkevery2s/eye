@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>災害体験談</title>
+	<meta name="description" content="災害体験談" />
+	<meta name="author" content="hitoshi" />
+
+	<link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.custom.css" />
+	<link rel="stylesheet" type="text/css" href="css/bookblock.css" />
+	<link rel="stylesheet" type="text/css" href="css/custom.css" />
+	<script src="js/modernizr.custom.79639.js"></script>
+	<style>
+		.section {
+			color: #fff;
+			padding: 0 1em 0 1em;
+		}
+
+		html {
+			font-family: "Meiryo", "Hiragino Maru Gothic Pro", sans-serif;
+		}
+
+		#speaker {
+			position: fixed;
+			right: 0;
+			bottom: 0;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="bb-custom-wrapper">
+		<div id="bb-bookblock" class="bb-bookblock">
+			<div class="bb-item" id="item1">
+				<div class="content">
+					<div class="scroller">
+						<h3><span id="title"></span></h3>
+						<p><span id="text1"></span></p>
+					</div>
+				</div>
+			</div>
+			<div class="bb-item" id="item2">
+				<div class="content">
+					<div class="scroller">
+						<p><span id="text2"></span></p>
+					</div>
+				</div>
+			</div>
+			<div class="bb-item" id="item3">
+				<div class="content">
+					<div class="scroller">
+						<p><span id="text3"></span></p>
+					</div>
+				</div>
+			</div>
+			<div class="bb-item" id="item4">
+				<div class="content">
+					<div class="scroller">
+						<p><span id="text4"></span></p>
+						<div id="speaker"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<nav>
+			<span id="bb-nav-prev">&larr;</span>
+			<span id="bb-nav-next">&rarr;</span>
+		</nav>
+
+
+	</div>
+
+	</div><!-- /container -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="js/jquery.mousewheel.js"></script>
+	<script src="js/jquery.jscrollpane.min.js"></script>
+	<script src="js/jquerypp.custom.js"></script>
+	<script src="js/jquery.bookblock.js"></script>
+	<script src="js/page.js"></script>
+	<script>
+		$(function() {
+
+			Page.init();
+
+		});
+	</script>
+
+	<script type="module">
+		onload = async () => {
+
+			const hash = location.hash;
+
+			const hash1 = hash.split("!");
+
+			let number = hash1[1];
+			console.log(number);
+
+			const res = await fetch('https://raw.githubusercontent.com/linkevery2s/eye/main/practice/data/experience.json');
+			const data = await res.json();
+
+			title.innerHTML = data[number].title;
+			text1.innerHTML = data[number].text1;
+			text2.innerHTML = data[number].text2;
+			text3.innerHTML = data[number].text3;
+			text4.innerHTML = data[number].text4;
+			speaker.innerHTML = data[number].source + "<br>" + data[number].speaker;
+
+		}
+	</script>
+
+</body>
+
+</html>

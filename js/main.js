@@ -22,7 +22,7 @@ $(function() {
 
 let disp = x => {
 
-  exp.innerHTML = '<iframe src="practice/experience.html#!' + x + '"></iframe>';
+  exp.innerHTML = '<iframe src="practice/experience/index.html#!' + x + '"></iframe>';
 
   $('.js-modal').fadeIn();
   return false;
