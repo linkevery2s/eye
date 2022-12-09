@@ -12,22 +12,6 @@
 	<link rel="stylesheet" type="text/css" href="css/bookblock.css" />
 	<link rel="stylesheet" type="text/css" href="css/custom.css" />
 	<script src="js/modernizr.custom.79639.js"></script>
-	<style>
-		.section {
-			color: #fff;
-			padding: 0 1em 0 1em;
-		}
-
-		html {
-			font-family: "Meiryo", "Hiragino Maru Gothic Pro", sans-serif;
-		}
-
-		#speaker {
-			position: fixed;
-			right: 0;
-			bottom: 0;
-		}
-	</style>
 </head>
 
 <body>
@@ -37,7 +21,7 @@
 			<div class="bb-item" id="item1">
 				<div class="content">
 					<div class="scroller">
-						<h3><span id="title"></span></h3>
+						<h2><span id="title1"></span></h2>
 						<p><span id="text1"></span></p>
 					</div>
 				</div>
@@ -45,6 +29,7 @@
 			<div class="bb-item" id="item2">
 				<div class="content">
 					<div class="scroller">
+						<h2><span id="title2"></span></h2>
 						<p><span id="text2"></span></p>
 					</div>
 				</div>
@@ -52,6 +37,7 @@
 			<div class="bb-item" id="item3">
 				<div class="content">
 					<div class="scroller">
+						<h2><span id="title3"></span></h2>
 						<p><span id="text3"></span></p>
 					</div>
 				</div>
@@ -59,6 +45,7 @@
 			<div class="bb-item" id="item4">
 				<div class="content">
 					<div class="scroller">
+						<h2><span id="title4"></span></h2>
 						<p><span id="text4"></span></p>
 						<div id="speaker"></div>
 					</div>
@@ -76,7 +63,7 @@
 	</div>
 
 	</div><!-- /container -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="js/jquery.mousewheel.js"></script>
 	<script src="js/jquery.jscrollpane.min.js"></script>
 	<script src="js/jquerypp.custom.js"></script>
@@ -103,7 +90,10 @@
 			const res = await fetch('https://raw.githubusercontent.com/linkevery2s/eye/main/practice/data/experience.json');
 			const data = await res.json();
 
-			title.innerHTML = data[number].title;
+			title1.innerHTML = data[number].title;
+			title2.innerHTML = data[number].title;
+			title3.innerHTML = data[number].title;
+			title4.innerHTML = data[number].title;
 			text1.innerHTML = data[number].text1;
 			text2.innerHTML = data[number].text2;
 			text3.innerHTML = data[number].text3;

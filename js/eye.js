@@ -126,14 +126,14 @@ let data_catch = () => {
       let first = rule_count;
 
       while (first > tisiki_count) {
-        first = first - hinan_count;
+        first = first - tisiki_count;
 
       }
 
       let second = first + 5;
 
       while (second > tisiki_count) {
-        second = second - hinan_count;
+        second = second - tisiki_count;
 
       }
 
@@ -198,7 +198,7 @@ let data_catch = () => {
           },
           {
             /* 災害体験談 */
-            text: "災害体験談" + data[fifth - 5].contents,
+            text: "災害体験談" + data[fifth - 1].contents,
             value: 10000
           }
           /*,
@@ -217,7 +217,7 @@ let data_catch = () => {
 
           eyeui.message.bot({
             delay: 1000,
-            content: 'こちら↓から読むことができます。<br><a href="javascript:void(0)" onClick="disp(' + data[fifth - 5].contents + ')">災害体験談' + data[fifth - 5].contents + '</a><br>※本のように見開きで読むことができます。'
+            content: 'こちら↓から読むことができます。<br><a href="javascript:void(0)" onClick="disp(' + data[fifth - 1].contents + ')">災害体験談' + data[fifth - 1].contents + '</a><br>※本のように見開きで読むことができます。'
           }).then(tugi());
 
         } else if (key == 9999) {
@@ -239,11 +239,6 @@ let data_catch = () => {
                 delay: 1000,
                 content: "参考画像を添付します。<br>" + '<a href="images/post/' + data[key - 1].image + '" class="intro_photo" data-lightbox="image" data-title="参考画像">参考画像</a>'
               }).then(function() {
-                //image_data.innerHTML = '<a href="images/post/' + data[key-1].image + '" class="intro_photo" data-lightbox="image" data-title="参考画像">参考画像</a>';
-                //image_g.innerHTML = '<img src = "images/post/' + data[key-1].image + '" width="100%">';
-                //image_data.innerHTML = '<a class="js-modal-open" href="#">参考画像</a>';
-                //image_g.innerHTML = '<img src = "images/post/' + data[key-1].image + '" width="100%">';
-                //$('.link_intro').fadeIn();
                 tugi();
               });
 
