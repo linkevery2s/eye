@@ -67,9 +67,9 @@ let data_catch = () => {
   if (jikan >= bg_times1 && jikan < bg_times2) {
     rule_count += 10;
   } else if (jikan >= bg_times2 && jikan < bg_times3) {
-    rule_count += 30;
+    rule_count += 25;
   } else {
-    rule_count += 50;
+    rule_count += 47;
 
   }
   console.log("この時間の定数は、" + rule_count);
