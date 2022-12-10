@@ -113,7 +113,7 @@ a:hover {
 }
 
 .scroller {
-  padding: 10px;
+  padding: 0;
 }
 
 .js .content:before,
