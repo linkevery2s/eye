@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+	<meta charset='UTF-8' name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
+	<meta name="author" content="hitoshi">
+	<meta name="keywords" content="防災,災害対策,自然伝承碑">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+	<style>
+		html,
+		body,
+		#map {
+			font-family: "Meiryo", "Hiragino Maru Gothic Pro", sans-serif;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+		}
+	</style>
+	<script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
+	<script src='./data/20221208.geojson'></script>
+
+	<script type='module'>
+		onload = async () => {
+
+			let tiri = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>,<a href="https://www.gsi.go.jp/bousaichiri/denshouhi.html" target="_blank">自然災害伝承碑</a>'
+			});
+
+			const map = L.map('map', {
+				center: [37.624, 136.141],
+				maxZoom: 14,
+				minZoom: 4,
+				zoomControl: false,
+				zoom: 5,
+				layers: tiri
+			});
+
+			let denshouhi = L.geoJson(shizen, {
+				style: sty,
+				onEachFeature: geo_k,
+				pointToLayer: iro
+			});
+			map.addLayer(denshouhi);
+
+			L.control.zoom({
+				position: 'topright'
+			}).addTo(map);
+
+		}
+
+		let sty = (feature) => {
+			return feature.properties && feature.properties.style;
+		}
+
+		let iro = (feature, latlng) => {
+			return L.circleMarker(latlng, {
+				radius: 10,
+				fillColor: "#2EFE2E",
+				color: "#000",
+				weight: 1,
+				opacity: 1,
+				fillOpacity: 0.8
+			});
+		}
+
+		let geo_k = (feature, layer) => {
+			let popup;
+			if (feature.properties && feature.properties["碑名"]) {
+				popup = "名称：" + feature.properties["碑名"];
+			}
+
+			if (feature.properties && feature.properties["建立年"]) {
+				popup += '<br>建立年：' + feature.properties["建立年"];
+			}
+
+			if (feature.properties && feature.properties["所在地"]) {
+				popup += '<br>所在地：' + feature.properties["所在地"];
+			}
+
+			if (feature.properties && feature.properties["災害名"]) {
+				popup += '<br>災害名：' + feature.properties["災害名"];
+			}
+
+			if (feature.properties && feature.properties["災害種別"]) {
+				popup += '<br>災害種別：' + feature.properties["災害種別"];
+			}
+
+			if (feature.properties && feature.properties["伝承内容"]) {
+				popup += '<br>伝承内容：<br>' + feature.properties["伝承内容"];
+			}
+
+			layer.bindPopup(popup);
+		}
+	</script>
+
+	<title>自然伝承碑マップ</title>
+
+</head>
+
+<body>
+
+	<div id='map'></div>
+
+</body>
+
+</html>

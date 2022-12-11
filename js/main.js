@@ -215,6 +215,21 @@ let wh = window.innerHeight;
 
 }
 
+let shizen = () => {
+  let wh = window.innerHeight;
+  console.log(wh);
+
+  zoom();
+  $("#zoom").hide();
+  $("#main").hide();
+
+  embed_map.innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/denshouhi.html" border="0"></iframe>';
+
+  $("#embed_map").fadeIn();
+  $('#back').fadeIn();
+
+}
+
 let back = () => {
   zoom();
   $("#back").hide();
