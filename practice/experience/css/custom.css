@@ -25,10 +25,10 @@ html {
 }
 
 body {
-  background: #fff;
+  background: #0597e8;
   font-weight: 400;
   font-size: 100%;
-  color: #333;
+  color: #fff;
   height: 100%;
 }
 
@@ -137,10 +137,10 @@ a:hover {
   font-weight: 300;
   font-size: 2em;
   padding: 0 0 10px;
-  color: #333;
+  color: #fff;
   margin: 0 1% 20px;
   text-align: left;
-  border-bottom: 3px dotted #000;
+  border-bottom: 3px dotted #fff;
 }
 
 .no-js .content h2 {
