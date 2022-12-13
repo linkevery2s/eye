@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<title>自然災害伝承碑マップ</title>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" >
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta property="og:title" content="自然災害伝承碑マップ" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="" />
+<meta property="og:description" content="自然災害伝承碑をマップにしました。" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="自然災害伝承碑マップ" />
+<meta name="twitter:image" content="" />
+<meta name="twitter:description" content="自然災害伝承碑をマップにしました。" />
+<meta name="author" content="仁志">
+<meta name="keywords" content="自然災害伝承碑,災害,防災"/>
+<title>自然災害伝承碑マップ</title>
+  <script src="https://unpkg.com/deck.gl@^8.0.0/dist.min.js"></script>
+</head>
+
+<body style="margin:0; width: 100vw; height: 100vh;"></body>
+
+<script type="text/javascript">
+  const {DeckGL,TileLayer,BitmapLayer,ScatterplotLayer} = deck;
+
+  const scatterplotLayer = new ScatterplotLayer({
+    data: 'https://raw.githubusercontent.com/linkevery2s/testdata/main/denshouhi2.json',
+    opacity: 0.5,
+    getPosition: p => [Number(p.lng), Number(p.lat)],/* p => p.coordinates */
+    getRadius: 3000,
+    getFillColor: d => [2,135,96],
+    getLineColor: d => [255,255,255],
+    pickable: true
+  });
+
+  const tileLayer = new TileLayer({
+    data: 'https://c.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    minZoom: 0,
+    maxZoom: 19,
+
+    renderSubLayers: props => {
+      const {bbox: {west,south,east,north}
+      } = props.tile;
+
+      return new BitmapLayer(props, {
+        data: null,
+        image: props.data,
+        bounds: [west, south, east, north]
+      });
+    }
+  });
+
+  new DeckGL({
+    initialViewState: {
+      longitude: 137.800,
+      latitude: 37.300,
+      zoom: 6,
+      maxZoom: 20,
+      pitch: 30,
+      bearing: -10
+    },
+    controller: true,
+    getTooltip: ({object}) => object && `${object.name}
+    ${object.address}
+    ${object.disaster_name}
+    ${object.overview}`,
+    layers: [
+      tileLayer, scatterplotLayer
+    ]
+  });
+
+</script>
+
+</html>
