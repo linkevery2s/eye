@@ -16,21 +16,56 @@
 <meta name="keywords" content="自然災害伝承碑,災害,防災"/>
 <title>自然災害伝承碑マップ</title>
   <script src="https://unpkg.com/deck.gl@^8.0.0/dist.min.js"></script>
+  <style>
+
+  .deck-tooltip {
+    font-family: Helvetica, Arial, sans-serif;
+    padding: 6px !important;
+    margin: 8px;
+    color: #fff !important;
+    background: #4682b4 !important;
+    max-width: 100px;
+    font-size: 0.5em;
+  }
+
+  .attribution {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 9;
+  padding: 2px 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  pointer-events: auto;
+}
+
+  </style>
 </head>
 
-<body style="margin:0; width: 100vw; height: 100vh;"></body>
+<body style="margin:0; width: 100vw; height: 100vh;">
+
+  <div class="attribution">
+    © <a href="http://www.openstreetmap.org/about/" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors
+  </div>
+
+</body>
 
 <script type="text/javascript">
-  const {DeckGL,TileLayer,BitmapLayer,ScatterplotLayer} = deck;
+  const {DeckGL,TileLayer,BitmapLayer,HexagonLayer} = deck;
 
-  const scatterplotLayer = new ScatterplotLayer({
-    data: 'https://raw.githubusercontent.com/linkevery2s/testdata/main/denshouhi2.json',
-    opacity: 0.5,
-    getPosition: p => [Number(p.lng), Number(p.lat)],/* p => p.coordinates */
-    getRadius: 3000,
-    getFillColor: d => [2,135,96],
-    getLineColor: d => [255,255,255],
-    pickable: true
+  const layer = new HexagonLayer({
+    id: 'hexagon-layer',
+    data: 'https://raw.githubusercontent.com/linkevery2s/testdata/main/data2.json',
+    pickable: true,
+    extruded: true,
+    getElevationWeight: d => Number(d.Value),
+    elevationAggregation: 'MAX',
+    getColorWeight: point => Number(point.Value),
+    colorAggregation: 'MAX',
+    radius: 7000,
+    elevationScale: 4,
+    elevationRange: [0, 200000],
+    getPosition: p => [Number(p.lng), Number(p.lat)]
   });
 
   const tileLayer = new TileLayer({
@@ -50,22 +85,34 @@
     }
   });
 
+
+  const tooltip = (d) => {
+      //マウスホバー位置に地物が存在するかチェックする
+      if (!d || !d.object) return null;
+      let obj = d.object;
+
+      console.log(obj);
+
+      const html = ["<table>", "降水量：" + obj.colorValue + "mm", "</table>"].join("\n");
+
+      return {
+        html: html
+      };
+    };
+
   new DeckGL({
     initialViewState: {
-      longitude: 137.800,
-      latitude: 37.300,
-      zoom: 6,
+      longitude: 131.32,
+      latitude: 31.551,
+      zoom: 5,
       maxZoom: 20,
-      pitch: 30,
+      pitch: 40,
       bearing: -10
     },
-    controller: true,
-    getTooltip: ({object}) => object && `${object.name}
-    ${object.address}
-    ${object.disaster_name}
-    ${object.overview}`,
+    controller: {touchRotate: true},
+    getTooltip: tooltip,
     layers: [
-      tileLayer, scatterplotLayer
+      tileLayer, layer
     ]
   });
 
