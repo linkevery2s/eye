@@ -16,17 +16,19 @@
 <meta name="keywords" content="自然災害伝承碑,災害,防災"/>
 <title>自然災害伝承碑マップ</title>
   <script src="https://unpkg.com/deck.gl@^8.0.0/dist.min.js"></script>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
   <style>
+  html,body{
+    padding:0; margin:0; width: 100%; height: 100%;
+  }
 
   .deck-tooltip {
     font-family: Helvetica, Arial, sans-serif;
-    padding: 6px !important;
-    margin: 8px;
+    padding: 8px !important;
     color: #fff !important;
     background: #4682b4 !important;
     max-width: 100px;
     font-size: 0.5em;
+    opacity: 0.8;
   }
 
   .attribution {
@@ -43,7 +45,7 @@
   </style>
 </head>
 
-<body style="margin:0;padding:0; width: 100%; height: 100%;">
+<body>
 
   <div class="attribution">
     © <a href="http://www.openstreetmap.org/about/" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors
@@ -52,13 +54,11 @@
 </body>
 
 <script type="text/javascript">
-  const {DeckGL,TileLayer,BitmapLayer,HexagonLayer} = deck;
-
-  const data = d3.csv('data/data.csv');
+  const {Deck,TileLayer,BitmapLayer,HexagonLayer} = deck;
 
   const layer = new HexagonLayer({
     id: 'hexagon-layer',
-    data,
+    data: "https://raw.githubusercontent.com/linkevery2s/testdata/main/data2.json",
     pickable: true,
     extruded: true,
     getElevationWeight: d => Number(d.Value),
@@ -68,11 +68,11 @@
     radius: 7000,
     elevationScale: 4,
     elevationRange: [0, 200000],
-    getPosition: p => [p.lng, p.lat]
+    getPosition: p => [Number(p.lng), Number(p.lat)]
   });
 
   const tileLayer = new TileLayer({
-    data: 'https://c.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    data: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png',
     minZoom: 0,
     maxZoom: 19,
 
@@ -94,29 +94,27 @@
       if (!d || !d.object) return null;
       let obj = d.object;
 
-      console.log(obj);
-
-      const html = ["<table>", "降水量：" + obj.colorValue + "mm", "</table>"].join("\n");
+      const html_tr = ["<table>", "降水量：" + obj.colorValue + "mm", "</table>"].join("\n");
 
       return {
-        html: html
+        html: html_tr
       };
     };
 
-  new DeckGL({
+  new Deck({
     initialViewState: {
-      longitude: 131.32,
-      latitude: 31.551,
-      zoom: 5,
+      longitude: 130.12,
+      latitude: 32.551,
+      zoom: 4.8,
       maxZoom: 20,
       pitch: 40,
       bearing: -10
     },
     controller: {touchRotate: true},
-    getTooltip: tooltip,
     layers: [
       tileLayer, layer
-    ]
+    ],
+    getTooltip: tooltip
   });
 
 </script>
