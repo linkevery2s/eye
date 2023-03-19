@@ -26,12 +26,27 @@
 
 		}
 
+		#pop_moji{
+			color: #ff0000;
+			font-size: 16px !important;
+
+		}
+
+		select {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			-ms-appearance: none;
+			appearance: none;
+		}
+
 	</style>
 
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
 	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
 	<script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
+	<script src="./refugedata/hokkaido.geojson"></script>
+	<script src="./refugedata/gifu.geojson"></script>
 
 	<script type='module'>
 
@@ -54,11 +69,86 @@
 			}).addTo(map);
 
 
-			window.select_change = () => {
-				alert(select.value);
-				map.setView([36, 138], 13);
+			let geo_layer = [];
 
+			window.select_change = () => {
+
+				map.removeLayer(geo_layer);
+
+				let select_value = select.value;
+
+				console.log(select_value);
+
+				if(select_value == 1){
+					map.setView([43.449, 142.707], 8);
+					geo_layer = L.geoJSON(hokkaido,{onEachFeature: popup_pin, pointToLayer: iro}).addTo(map);
+
+				}
+				else if(select_value == 21){
+
+					map.setView([35.816, 136.980], 8);
+					geo_layer = L.geoJSON(gifu,{onEachFeature: popup_pin, pointToLayer: iro}).addTo(map);
+
+				}
+				
 			}
+
+			let popup_pin = (feature, layer) => {
+				let popup;
+				if (feature.properties && feature.properties.Name) {
+					popup = "名称：" + feature.properties.Name;
+				}
+
+				if (feature.properties && feature.properties.Jusho){
+					popup += '<br>住所：' + feature.properties.Jusho;
+				}
+
+				if (feature.properties && feature.properties.kouzui){
+					popup += '<br>洪水：<span id = "pop_moji">' + feature.properties.kouzui + '</span>';
+				}
+
+				if (feature.properties && feature.properties.gake){
+					popup += '　がけ崩れ、土石流及び地滑り：<span id = "pop_moji">' + feature.properties.gake + '</span><br>';
+				}
+
+				if (feature.properties && feature.properties.takashio){
+					popup += '高潮：<span id = "pop_moji">' + feature.properties.takashio + '</span>';
+				}
+
+				if (feature.properties && feature.properties.jishin){
+					popup += '　地震：<span id = "pop_moji">' + feature.properties.jishin + '</span>';
+				}
+
+				if (feature.properties && feature.properties.tsunami){
+					popup += '　津波：<span id = "pop_moji">' + feature.properties.tsunami + '</span><br>';
+				}
+
+				if (feature.properties && feature.properties.kaji){
+					popup += '大規模な火事：<span id = "pop_moji">' + feature.properties.kaji + '</span>';
+				}
+
+				if (feature.properties && feature.properties.naisui){
+					popup += '　内水氾濫：<span id = "pop_moji">' + feature.properties.naisui + '</span>';
+				}
+
+				if (feature.properties && feature.properties.kazan){
+					popup += '　火山：<span id = "pop_moji">' + feature.properties.kazan + '</span>';
+				}
+
+				layer.bindPopup(popup);
+			}
+
+			let iro = (feature, latlng) => {
+				return L.circleMarker(latlng, {
+					radius: 10,
+					fillColor: "#006e54",
+					color: "#ffffff",
+					weight: 1,
+					opacity: 1,
+					fillOpacity: 0.8
+				});
+			}
+
 
 		}
 
