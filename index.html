@@ -92,13 +92,13 @@
 
         <div id="button" onclick="hazard()">ハザードマップ</div>
 
-        <div id="button" onclick="aed()">AEDの使い方</div>
-
-        <div id="button" onclick="level()">警戒レベルと避難</div>
+        <!--<div id="button" onclick="aed()">AEDの使い方</div>-->
 
         <div id="button" onclick="tokai()">東海・東南海地震 震度マップ</div>
 
         <div id="button" onclick="shizen()">自然災害伝承碑マップ</div>
+
+        <div id="button" onclick="level()">警戒レベルと避難</div>
 
 
 
@@ -149,16 +149,6 @@
       <div id="rss" class="contents">
         <h2><i class="fas fa-leaf"></i>　開発日記　<i class="fab fa-pagelines"></i></h2>
         <div id="diary"></div>
-
-        <!--<hr>
-
-        <h2><i class="fas fa-leaf"></i>　Twitter発信　<i class="fab fa-pagelines"></i></h2>
-    <p>EYEのTwitter公式アカウントからの情報発信です。</p>
-		<center>
-		<div id="tweet">
-		<a class="twitter-timeline" href="https://twitter.com/bseye17?ref_src=twsrc%5Etfw">Tweets by bseye17</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-		</div>
-    </center>-->
       </div>
 
       <!-- シェア -->
@@ -231,21 +221,21 @@
   <script src="js/main.js"></script>
   <script type="module">
 
-  onload = async () => {
+    /* 開発日記 */
+    onload = async () => {
 
-    const res = await fetch('https://raw.githubusercontent.com/linkevery2s/eye/main/diary.json');
-    const data = await res.json();
-    let count = data.length;
+      const res = await fetch('https://raw.githubusercontent.com/linkevery2s/eye/main/diary.json');
+      const data = await res.json();
+      let count = data.length;
 
-    diary.innerHTML = "";
+      diary.innerHTML = "";
 
-    	for (let i = 0; i < count; i++){
-          diary.innerHTML += '<div id="day_s">' + data[i].day + "<br><br>" + data[i].explanation + "</div>";
+      for (let i = 0; i < count; i++){
+        diary.innerHTML += '<div id="day_s">' + data[i].day + "<br><br>" + data[i].explanation + "</div>";
 
       }
 
-  }
-
+    }
 
   </script>
 

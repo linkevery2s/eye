@@ -5,47 +5,126 @@
 	<meta charset='UTF-8' name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
 	<meta name="author" content="仁志">
 	<meta name="keywords" content="防災,災害対策,ハザードマップ">
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-
-	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
 	<script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
 
-  <style>
-    html,
-    body,
-    #map {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
+	<style>
+		html,
+		body,
+		#map {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+		}
 
-    #home {
-      z-index: 100;
-      position: fixed;
-      left: 5px;
-      bottom: 5px;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 5px;
-      border: 3px solid #007bbb;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-  </style>
+		#home {
+			z-index: 100;
+			position: fixed;
+			left: 5px;
+			bottom: 5px;
+			background: rgba(255, 255, 255, 0.8);
+			padding: 5px;
+			border: 3px solid #007bbb;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+	</style>
 
-  <script type='module'>
+	<script type='module'>
 		onload = async () => {
 
+			/* ベースマップ */
 			let tiri = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
-				attribution: '&copy; <a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>'
+				attribution: '&copy; <a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>,<a href="https://disaportal.gsi.go.jp/hazardmap/copyright/opendata.html" target="_blank">ハザードマップポータルサイト</a>'
 			});
 
-      let hazard_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_data/{z}/{x}/{y}.png`, {
-        opacity: 0.7,
-        attribution: "<a href='https://disaportal.gsi.go.jp/hazardmap/copyright/opendata.html'>ハザードマップポータルサイト</a>"
-      });
+
+			/* ハザードマップ */
+			let shinsui_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_data/{z}/{x}/{y}.png`, {
+				opacity: 0.7
+			}
+			);
+
+			let keizoku_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/01_flood_l2_keizoku_data/{z}/{x}/{y}.png`, {
+				opacity: 0.7
+			}
+			);
+
+			let kaokuhanran_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/01_flood_l2_kaokutoukai_hanran_data/{z}/{x}/{y}.png`, {
+				opacity: 0.7
+			}
+			);
+
+			let kaokuhanran2_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/01_flood_l2_kaokutoukai_kagan_data/{z}/{x}/{y}.png`, {
+				opacity: 0.7
+			}
+			);
+
+			let takashio_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/03_hightide_l2_shinsuishin_data/{z}/{x}/{y}.png`, {
+				opacity: 0.7
+			}
+			);
+
+			let tsunami_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}.png`, {
+				opacity: 0.7
+			}
+			);
+
+			let dosya1_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/05_dosekiryukeikaikuiki/{z}/{x}/{y}.png`, {
+				opacity: 0.7
+			}
+			);
+
+			let dosya2_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/05_kyukeishakeikaikuiki/{z}/{x}/{y}.png`, {
+				opacity: 0.7
+			}
+			);
+
+			let dosya3_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/05_jisuberikeikaikuiki/{z}/{x}/{y}.png`, {
+				opacity: 0.7
+			}
+			);
+
+			let doseki_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/05_dosekiryukikenkeiryu/{z}/{x}/{y}.png`, {
+				opacity: 0.7
+			}
+			);
+
+			let kiken1_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/05_kyukeisyachihoukai/{z}/{x}/{y}.png`, {
+				opacity: 0.9
+			}
+			);
+
+			let kiken2_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/05_jisuberikikenkasyo/{z}/{x}/{y}.png`, {
+				opacity: 0.9
+			}
+			);
+
+			let kiken3_layer = new L.tileLayer(`https://disaportaldata.gsi.go.jp/raster/05_nadarekikenkasyo/{z}/{x}/{y}.png`, {
+				opacity: 0.9
+			}
+			);
+
+
+			let baseMaps = {
+				"浸水想定": shinsui_layer,
+				"浸水継続時間": keizoku_layer,
+				"家屋倒壊等氾濫（氾濫流）": kaokuhanran_layer,
+				"家屋倒壊等氾濫（河岸侵食）": kaokuhanran2_layer,
+				"高潮浸水想定": takashio_layer,
+				"津波浸水想定": tsunami_layer,
+				"土砂災害（土石流）": dosya1_layer,
+				"土砂災害（急傾斜地）": dosya2_layer,
+				"土砂災害（地すべり）": dosya3_layer,
+				"土石流危険渓流": doseki_layer,
+				"急傾斜地崩壊危険箇所": kiken1_layer,
+				"地すべり危険箇所": kiken2_layer,
+				"雪崩危険箇所": kiken3_layer
+			};
 
 			const map = L.map('map', {
 				center: [34.624, 135.341],
@@ -53,22 +132,24 @@
 				minZoom: 4,
 				zoomControl: false,
 				zoom: 7,
-				layers: [tiri, hazard_layer]
+				layers: [tiri, shinsui_layer]
 			});
 
 			L.control.zoom({
 				position: 'topright'
 			}).addTo(map);
 
+			L.control.layers(baseMaps).addTo(map);
+
 		}
 	</script>
 
-  <title>ハザードマップ</title>
+	<title>ハザードマップ</title>
 
 </head>
 
 <body>
-  <div id="map"></div>
+	<div id="map"></div>
 
 </body>
 

@@ -4,8 +4,8 @@
 	<meta charset='UTF-8' name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
 	<meta name="author" content="仁志">
 	<meta name="keywords" content="防災,災害対策,雨雲レーダー,降水ナウキャスト">
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
 	<link href="./add.css" rel="stylesheet">
 	<script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
@@ -30,8 +30,8 @@
 
 			time_stamp.innerHTML = year + "年" + month + "月" + day + "日" + jikoku_h + "時" + jikoku_m + "分";
 
-			let tiri = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', {
-				attribution: '&copy; <a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>'
+			let tiri = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}?blankTile=false', {
+				attribution: '&copy; <a href="https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer" target="_blank">USGS Imagery Only</a>'
 			});
 
 			let ame_layer = new L.tileLayer(`https://www.jma.go.jp/bosai/jmatile/data/nowc/${day_time}/none/${valid_time}/surf/hrpns/{z}/{x}/{y}.png`, {
