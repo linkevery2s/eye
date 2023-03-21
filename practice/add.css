@@ -12,6 +12,10 @@ body,
   z-index: 0;
 }
 
+html{
+  background: #000000;
+}
+
 #time_stamp {
   z-index: 100;
   position: fixed;
