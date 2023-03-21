@@ -14,7 +14,11 @@
 			padding: 0;
 			width: 100%;
 			height: 100%;
-			z-index: 0;
+			z-index: 10;
+		}
+
+		html{
+			background: #000000;
 		}
 
 		.select_button{
@@ -32,11 +36,110 @@
 
 		}
 
-		select {
-			-moz-appearance: none;
-			-webkit-appearance: none;
-			-ms-appearance: none;
-			appearance: none;
+		.loading {
+			position: fixed;
+			z-index: 0;
+			width: 100%;
+			height: 100vh;
+			margin: 0;
+			padding: 0;
+			background: #000000;
+		}
+
+		.loading.is-loaded {
+			opacity: 0;
+			visibility: hidden;
+			transform: translateX(-100vw);
+		}
+
+		.page.is-loaded {
+			display: block;
+		}
+
+		.ring
+		{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width:	150px;
+			height: 150px;
+			background: transparent;
+			border: 3px solid #3c3c3c;
+			border-radius: 50%;
+			text-align: center;
+			align-items: center;
+			line-height: 150px;
+			font-family: sans-serif;
+			font-size: 20px;
+			color: #fff000;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			text-shadow: 1px 2px 10px #fff000; 
+			box-shadow: 0 0 0 20px rgba(0,0,0,.5);
+			background: linear-gradient(0deg, #333, #000);
+			box-shadow: 0 0 0 4px  #353535, 0 0 0 5px #3e3e3e,inset 0 0 10px rgba(0,0,0,1), 0 5px 20px rgba(0,0,0,5), inset 0 0 15px rgba(0,0,0,.2);
+		}
+		.ring:before
+		{
+			content: '';
+			position:absolute;
+			top: -3px;
+			left: -3px;
+			height: 100%;
+			width: 100%;
+			border: 3px solid transparent;
+			border-top: 3px solid #fff000;
+			border-right: 3px solid #fff000;
+			border-radius: 50%;
+			animation: animateCircle 2s linear infinite;
+		}
+		.rot
+		{
+			display: block;
+			position: absolute;
+			top: calc(50% - 2px);
+			left: 50%;
+			width: 50%;
+			background: transparent;
+			height: 4px;
+			transform-origin: left;
+			animation: animate 2s linear infinite;
+		}
+		.rot:before
+		{
+			content: '';
+			position: absolute;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background: #fff000;
+			top: -6px;
+			right: -8px;
+			box-shadow: 0 0 20px #fff000;
+		}
+		@keyframes animateCircle
+		{
+			0%
+			{
+				transform: rotate(0deg);
+			}
+			100%
+			{
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes animate
+		{
+			0%
+			{
+				transform: rotate(45deg);
+			}
+			100%
+			{
+				transform: rotate(405deg);
+			}
 		}
 
 	</style>
@@ -104,6 +207,7 @@
 	<script type='module'>
 
 		onload = async () => {
+
 			let tiri = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>,<a href="https://www.gsi.go.jp/bousaichiri/hinanbasho.html" target="_blank">指定緊急避難場所データ</a>'
 			});
@@ -123,29 +227,22 @@
 
 			let b = 0;let marker1;let marker2;let ido; let keido;
 
+			let marker = null;
+
 			let gps_get = (position) => {
 				ido = position.coords.latitude;
 				keido = position.coords.longitude;
 				map.setView([ido, keido], 15);
 
-				let pulsingIcon = L.icon.pulse({iconSize:[12,12],color:'#2ca9e1', fillColor: '#2ca9e1'});
+				let pulsingIcon = L.icon.pulse({iconSize:[12,12],color:'blue', fillColor: 'blue'});
 
-				if( b == 0 ){
-					marker1 = L.marker([ido, keido] ,{icon: pulsingIcon}).addTo(map);
-
-					b=1;
-
-					marker2.onRemove(map);
-
+				if(map && marker){
+					map.removeLayer(marker);
+					marker = null;
 				}
-				else{
-					marker1.onRemove(map);
 
-					marker2 = L.marker([ido, keido] ,{icon: pulsingIcon}).addTo(map);
+				marker = L.marker([ido, keido] ,{icon: pulsingIcon}).addTo(map);
 
-					b=0;
-
-				}
 			}
 
 			let gps_error = (error) => {
@@ -185,7 +282,7 @@
 
 			}
 			
-		}*/
+			}*/
 
 			let pref = new Array(47);let markers = new Array(47);
 
@@ -300,9 +397,18 @@
 				map.addLayer(markers[i]);
 			}				
 			
-
 		}
 
+		let stopload = () =>{
+
+			let loader = document.querySelector('.loading'),
+			page = document.querySelector('.page');
+
+			page.classList.add('is-loaded');
+			loader.classList.add('is-loaded');
+
+		}
+		window.addEventListener('load', stopload);
 
 
 	</script>
@@ -315,62 +421,14 @@
 
 <body>
 
-	<div id='map'></div>
-
-	<!--<center>
-		<div class="select_button">
-			<select name="pref_id" id = "select" onchange="select_change();">
-				<option value="" selected> - 都道府県選択 - </option>
-				<option value="1">北海道</option>
-				<option value="2">青森県</option>
-				<option value="3">岩手県</option>
-				<option value="4">宮城県</option>
-				<option value="5">秋田県</option>
-				<option value="6">山形県</option>
-				<option value="7">福島県</option>
-				<option value="8">茨城県</option>
-				<option value="9">栃木県</option>
-				<option value="10">群馬県</option>
-				<option value="11">埼玉県</option>
-				<option value="12">千葉県</option>
-				<option value="13">東京都</option>
-				<option value="14">神奈川県</option>
-				<option value="15">新潟県</option>
-				<option value="16">富山県</option>
-				<option value="17">石川県</option>
-				<option value="18">福井県</option>
-				<option value="19">山梨県</option>
-				<option value="20">長野県</option>
-				<option value="21">岐阜県</option>
-				<option value="22">静岡県</option>
-				<option value="23">愛知県</option>
-				<option value="24">三重県</option>
-				<option value="25">滋賀県</option>
-				<option value="26">京都府</option>
-				<option value="27">大阪府</option>
-				<option value="28">兵庫県</option>
-				<option value="29">奈良県</option>
-				<option value="30">和歌山県</option>
-				<option value="31">鳥取県</option>
-				<option value="32">島根県</option>
-				<option value="33">岡山県</option>
-				<option value="34">広島県</option>
-				<option value="35">山口県</option>
-				<option value="36">徳島県</option>
-				<option value="37">香川県</option>
-				<option value="38">愛媛県</option>
-				<option value="39">高知県</option>
-				<option value="40">福岡県</option>
-				<option value="41">佐賀県</option>
-				<option value="42">長崎県</option>
-				<option value="43">熊本県</option>
-				<option value="44">大分県</option>
-				<option value="45">宮崎県</option>
-				<option value="46">鹿児島県</option>
-				<option value="47">沖縄県</option>
-			</select>
+	<div class="loading">
+		<div class="ring">
+			loading
+			<span class="rot"></span>
 		</div>
-	</center>-->
+	</div>
+
+	<div id='map' class="page"></div>
 
 </body>
 
