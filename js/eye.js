@@ -224,7 +224,7 @@ let data_catch = () => {
 
           eyeui.message.bot({
             delay: 1000,
-            content: 'こちら↓から読むことができます。<br><a href="javascript:void(0)" onClick="disp2(' + data[forth - 1].contents + ')">' + data[forth - 1].sub + '</a><br>※ノベルゲームとして学べます。'
+            content: 'こちら↓から読むことができます。<br><a href="javascript:void(0)" onClick="disp2(' + data[forth - 1].contents + ')">' + data[forth - 1].sub + '</a><br>※ノベルゲーム感覚で学べます。'
           }).then(tugi());
 
         } else {
