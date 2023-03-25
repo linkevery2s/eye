@@ -19,9 +19,12 @@
         menu: '#menu',
         anchors: ['section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'section7', 'section8','section9', 'section10'],
         sectionsColor: ['#3730a3', '#9d174d', '#9f1239', '#9d174d', '#7a4171', '#d66a35', '#00552e', '#460e44', '#9e3d3f', '#8f2e14', '#74325c'],
-        navigation: false
+        navigation: false,
+        keyboardScrolling: false
       });
+      $.fn.pagepiling.setAllowScrolling(false);
     });
+
   </script>
 
   <style>
@@ -68,8 +71,10 @@
 
     <p class="pt-5 pb-5">あなたがとるべき避難行動は、どのタイミングでの避難でしょうか？</p>
     <p class="pb-5">ご家族、友人とチェックしてみましょう！</p>
-
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section2">はじめる</a></button>
+    <img class="inline w-80" src="./img/family.jpg" alt="避難行動判定フローの画像">
+    <p class="pt-5">
+      <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section2">はじめる</a></button>
+    </p>
 
   </div>
 
@@ -77,12 +82,17 @@
     <h1 class="text-2xl">ハザードマップを確認！</h1>
     <p class="pt-5 pb-5">家がある場所に色が塗られていますか？</p>
 
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2 mr-5"><a href="#section4">は　い</a></button>
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section3">いいえ</a></button>
+    <img class="inline w-80" src="./img/hazardmap.png" alt="ハザードマップを確認の画像">
+
+    <p class="pt-5">
+      <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2 mr-5"><a href="#section4">は　い</a></button>
+      <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section3">いいえ</a></button>
+    </p>
 
   </div>
   <div class="section" id="section3">
-    <h1 class="text-2xl">ANSWER</h1>
+    <h1 class="text-3xl">ANSWER</h1>
+    <img class="inline w-80 pt-5" src="./img/mountain.png" alt="山間部の画像">
     <p class="pt-5 pb-5">色が塗られていなくても、周りと比べて低い土地や崖のそばなどにお住まいの方は、市区町村からの避難情報を参考に必要に応じて避難してください。</p>
 
   </div>
@@ -91,45 +101,70 @@
     <h1 class="text-2xl">避難にかかる時間を確認！</h1>
     <p class="pt-5 pb-5">ご自身または一緒に避難する方は避難に時間がかかりますか？</p>
 
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2 mr-5"><a href="#section5">は　い</a></button>
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section6">いいえ</a></button>
+    <img class="inline w-80" src="./img/refugetime.jpg" alt="避難にかかる時間を確認の画像">
+
+    <p class="pt-5">
+      <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2 mr-5"><a href="#section5">は　い</a></button>
+      <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section6">いいえ</a></button>
+    </p>
   </div>
 
   <div class="section" id="section5">
     <h1 class="text-2xl">身を寄せられる場所の確認！</h1>
     <p class="pt-5 pb-5">安全な場所に住んでいて身を寄せられる親戚や知人はいますか？</p>
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2 mr-5"><a href="#section7">は　い</a></button>
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section8">いいえ</a></button>
 
+    <img class="inline w-80" src="./img/network.jpg" alt="身を寄せられる場所の確認の画像">
+
+    <p class="pt-5">
+      <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2 mr-5"><a href="#section7">は　い</a></button>
+      <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section8">いいえ</a></button>
+    </p>
   </div>
 
   <div class="section" id="section6">
     <h1 class="text-2xl">身を寄せられる場所の確認！</h1>
     <p class="pt-5 pb-5">安全な場所に住んでいて身を寄せられる親戚や知人はいますか？</p>
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2 mr-5"><a href="#section9">は　い</a></button>
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section10">いいえ</a></button>
+
+    <img class="inline w-80" src="./img/network.jpg" alt="身を寄せられる場所の確認の画像">
+
+    <p class="pt-5">
+      <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2 mr-5"><a href="#section9">は　い</a></button>
+      <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section10">いいえ</a></button>
+    </p>
   </div>
 
   <div class="section" id="section7">
-    <h1 class="text-2xl">ANSWER</h1>
+    <h1 class="text-3xl">ANSWER</h1>
+
+    <img class="inline w-80 pt-5" src="./img/level3.png" alt="警戒レベル３の画像">
+
     <p class="pt-5 pb-5">警戒レベル３が出たら、安全な親戚や知人宅に避難しましょう(日頃から相談しておきましょう)。</p>
 
   </div>
 
   <div class="section" id="section8">
-    <h1 class="text-2xl">ANSWER</h1>
+    <h1 class="text-3xl">ANSWER</h1>
+
+    <img class="inline w-80 pt-5" src="./img/level3.png" alt="警戒レベル３の画像">
+
     <p class="pt-5 pb-5">警戒レベル３が出たら、市区町村が指定している指定緊急避難場所に避難しましょう。</p>
 
   </div>
 
   <div class="section" id="section9">
-    <h1 class="text-2xl">ANSWER</h1>
+    <h1 class="text-3xl">ANSWER</h1>
+
+    <img class="inline w-80 pt-5" src="./img/level4.png" alt="警戒レベル４の画像">
+
     <p class="pt-5 pb-5">警戒レベル４が出たら、安全な親戚や知人宅に避難しましょう(日頃から相談しておきましょう)。</p>
 
   </div>
 
   <div class="section" id="section10">
-    <h1 class="text-2xl">ANSWER</h1>
+    <h1 class="text-3xl">ANSWER</h1>
+
+    <img class="inline w-80 pt-5" src="./img/level4.png" alt="警戒レベル４の画像">
+
     <p class="pt-5 pb-5">警戒レベル４が出たら、市区町村が指定している指定緊急避難場所に避難しましょう。</p>
 
   </div>
@@ -137,7 +172,7 @@
 </div>
 
 <div id="footer" class="pt-1 pb-1">
-    <p class="text-xs">出典：<a href="https://www.bousai.go.jp/oukyu/hinanjouhou/r3_hinanjouhou_guideline/" target="_blank">避難情報に関するガイドライン</a>をもとに<br>仁志が加工・編集して作成</p>
+  <p class="text-xs">出典：<a href="https://www.bousai.go.jp/oukyu/hinanjouhou/r3_hinanjouhou_guideline/" target="_blank">避難情報に関するガイドライン</a>をもとに<br>仁志が加工・編集して作成</p>
 </div>
 
 </body>
