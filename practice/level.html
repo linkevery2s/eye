@@ -40,10 +40,27 @@
       text-align: center;
       padding: 0 2em 0 2em;
     }
+
+    #footer {
+      position: fixed;
+      width: 100%;
+      text-align: center;
+      background-color: #000;
+      color: #ffffff;
+      bottom: 0;
+      z-index: 10;
+    }
+
+    #footer a {
+      text-decoration: none;
+      border-bottom: 1px dotted #fff;
+      color: #fff;
+    }
+
   </style>
 </head>
 
-<body>
+<body class="bg-black-500">
 
  <div id="pagepiling">
   <div class="section" id="section1">
@@ -60,7 +77,7 @@
     <h1 class="text-2xl">ハザードマップを確認！</h1>
     <p class="pt-5 pb-5">家がある場所に色が塗られていますか？</p>
 
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section4">は　い</a></button>
+    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2 mr-5"><a href="#section4">は　い</a></button>
     <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section3">いいえ</a></button>
 
   </div>
@@ -74,14 +91,14 @@
     <h1 class="text-2xl">避難にかかる時間を確認！</h1>
     <p class="pt-5 pb-5">ご自身または一緒に避難する方は避難に時間がかかりますか？</p>
 
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section5">は　い</a></button>
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section6">いいえ</a></button>
+    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2 mr-5"><a href="#section6">は　い</a></button>
+    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section5">いいえ</a></button>
   </div>
 
   <div class="section" id="section5">
     <h1 class="text-2xl">身を寄せられる場所の確認！</h1>
     <p class="pt-5 pb-5">安全な場所に住んでいて身を寄せられる親戚や知人はいますか？</p>
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section7">は　い</a></button>
+    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2 mr-5"><a href="#section7">は　い</a></button>
     <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section8">いいえ</a></button>
 
   </div>
@@ -89,7 +106,7 @@
   <div class="section" id="section6">
     <h1 class="text-2xl">身を寄せられる場所の確認！</h1>
     <p class="pt-5 pb-5">安全な場所に住んでいて身を寄せられる親戚や知人はいますか？</p>
-    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section9">は　い</a></button>
+    <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2 mr-5"><a href="#section9">は　い</a></button>
     <button class="bg-blue-500 hover:bg-white-100 text-white rounded px-4 py-2"><a href="#section10">いいえ</a></button>
   </div>
 
@@ -117,6 +134,10 @@
 
   </div>
 
+</div>
+
+<div id="footer" class="pt-1 pb-1">
+    <p class="text-xs">出典：<a href="https://www.bousai.go.jp/oukyu/hinanjouhou/r3_hinanjouhou_guideline/" target="_blank">避難情報に関するガイドライン</a>をもとに<br>仁志が加工・編集して作成</p>
 </div>
 
 </body>
