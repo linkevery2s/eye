@@ -208,7 +208,7 @@ let wh = window.innerHeight;
   $("#zoom").hide();
   $("#main").hide();
 
-  embed_map.innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/aed.html" border="0"></iframe>';
+  embed_map.innerHTML = '<iframe width="100%" height="' + wh + 'px" src ="practice/cardiopulmonaryresuscitation.html" border="0"></iframe>';
 
   $("#embed_map").fadeIn();
   $('#back').fadeIn();
