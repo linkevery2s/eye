@@ -47,7 +47,7 @@ body {
   background-color: #0f2350;
   color: #ffffff;
   margin: 0;
-  padding: 0;
+  padding: 2px 0 0 0;
   text-align: center;
   bottom: 0;
   z-index: 10;
@@ -252,9 +252,6 @@ li {
 }
 
 /* EYE 本体 */
-/*.fb_iframe_widget>span {
-  vertical-align: baseline !important;
-}*/
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -290,13 +287,17 @@ li {
 
 #button {
   margin: 1.5em .5em 1.5em .5em;
-  border: 2px solid #38b48b;
+  border: 2px solid #f2f2b0;
   padding: .7em;
   border-radius: .3em;
-  background: #006e54;
+  background: #e45e32;
   color: #ffffff;
   text-align: center;
   cursor: pointer;
+}
+
+.fb_iframe_widget>span {
+  vertical-align: baseline !important;
 }
 
 .modal {
