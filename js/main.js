@@ -8,16 +8,6 @@ $(function() {
     $('.js-modal').fadeOut();
     return false;
   });
-  //リンク集ウィンドウ表示
-  $('.link_intro-open').on('click', function() {
-    $('.link_intro').fadeIn();
-    return false;
-  });
-  $('.link_intro-close').on('click', function() {
-    $('.link_intro').fadeOut();
-    return false;
-  });
-
 });
 
 let disp = x => {
@@ -126,18 +116,11 @@ let zoom = () => {
 let home = () => {
 
   location.href = "./index.html";
-  /*
-  	$("#manual").hide();
-  	$("#rss").hide();
-  	$("#question").hide();
-    $("#share").hide();
-  	$('#bs_chat').fadeIn();
-  */
+
 }
 
 let ame = () => {
   let wh = window.innerHeight;
-  console.log(wh);
 
   zoom();
   $("#zoom").hide();
@@ -217,7 +200,6 @@ let wh = window.innerHeight;
 
 let shizen = () => {
   let wh = window.innerHeight;
-  console.log(wh);
 
   zoom();
   $("#zoom").hide();
@@ -235,5 +217,6 @@ let back = () => {
   $("#back").hide();
   $("#embed_map").hide();
   $("#main").fadeIn();
+  $("#zoom").fadeIn();
 
 }
