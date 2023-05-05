@@ -42,9 +42,9 @@ let rss = () => {
 }
 
 let listen = () => {
-  $('body,html').animate({
-    scrollTop: $("#main").offset().top
-  }, 0);
+
+window.scrollTo({top: 0,behavior: "auto"});
+
   $("#bs_chat").hide();
   $("#manual").hide();
   $("#question").hide();

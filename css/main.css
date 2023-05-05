@@ -330,35 +330,6 @@ li {
 
 }
 
-.link_intro {
-  display: none;
-  background: #006e54;
-  left: 50%;
-  max-width: 500px;
-  border: double 5px #fff;
-  padding: 20px;
-  color: #ffffff;
-  position: fixed;
-  top: 150px;
-  /*bottom: 50px;*/
-  transform: translate(-50%, -50%);
-  width: 50%;
-  z-index: 15;
-}
-
-.link_intro .intro_photo {
-  border-bottom: 1px dotted #ffffff;
-  color: #ffffff;
-}
-
-.link_intro .intro_photo::before {
-  font-family: "Font Awesome 5 Free";
-  content: '\f03e';
-  font-size: 15px;
-  font-weight: 400;
-  margin-right: 4px;
-}
-
 .closed {
   position: absolute;
   right: 0px;
