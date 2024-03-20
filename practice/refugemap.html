@@ -1,435 +1,177 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="ja">
 
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-	<meta charset='UTF-8' name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
-	<meta name="author" content="仁志">
-	<meta name="keywords" content="防災,災害対策,指定緊急避難場所">
+    <meta charset="UTF-8" name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>deck-gl.leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <script src="https://unpkg.com/deck.gl@8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl-leaflet@1.2.1/dist/deck.gl-leaflet.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+    <link rel="stylesheet" href="./lib/L.Icon.Pulse.css">
+    <script src="./lib/L.Icon.Pulse.js"></script>
 
-	<style>
-		html,
-		body,
-		#map {
-			margin: 0;
-			padding: 0;
-			width: 100%;
-			height: 100%;
-			z-index: 10;
-		}
+    <style>
+        html,
+        body,
+        #map {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
 
-		html{
-			background: #000000;
-		}
-
-		.select_button{
-			z-index: 20000;
-			position: fixed;
-			top: 10px;
-			width: 300px;
-			left: calc(50% - 150px);
-
-		}
-
-		#pop_moji{
+        #pop_moji{
 			color: #ff0000;
-			font-size: 16px !important;
-
+			font-size: 18px;
+            font-weight: bold !important;
 		}
 
-		.loading {
-			position: fixed;
-			z-index: 0;
-			width: 100%;
-			height: 100vh;
-			margin: 0;
-			padding: 0;
-			background: #000000;
-		}
+        .deck-tooltip {
+            z-index: 100 !important;
+        }
 
-		.loading.is-loaded {
-			opacity: 0;
-			visibility: hidden;
-			transform: translateX(-100vw);
-		}
-
-		.page.is-loaded {
-			display: block;
-		}
-
-		.ring
-		{
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%,-50%);
-			width:	150px;
-			height: 150px;
-			background: transparent;
-			border: 3px solid #3c3c3c;
-			border-radius: 50%;
-			text-align: center;
-			align-items: center;
-			line-height: 150px;
-			font-family: sans-serif;
-			font-size: 20px;
-			color: #fff000;
-			letter-spacing: 2px;
-			text-transform: uppercase;
-			text-shadow: 1px 2px 10px #fff000; 
-			box-shadow: 0 0 0 20px rgba(0,0,0,.5);
-			background: linear-gradient(0deg, #333, #000);
-			box-shadow: 0 0 0 4px  #353535, 0 0 0 5px #3e3e3e,inset 0 0 10px rgba(0,0,0,1), 0 5px 20px rgba(0,0,0,5), inset 0 0 15px rgba(0,0,0,.2);
-		}
-		.ring:before
-		{
-			content: '';
-			position:absolute;
-			top: -3px;
-			left: -3px;
-			height: 100%;
-			width: 100%;
-			border: 3px solid transparent;
-			border-top: 3px solid #fff000;
-			border-right: 3px solid #fff000;
-			border-radius: 50%;
-			animation: animateCircle 2s linear infinite;
-		}
-		.rot
-		{
-			display: block;
-			position: absolute;
-			top: calc(50% - 2px);
-			left: 50%;
-			width: 50%;
-			background: transparent;
-			height: 4px;
-			transform-origin: left;
-			animation: animate 2s linear infinite;
-		}
-		.rot:before
-		{
-			content: '';
-			position: absolute;
-			width: 16px;
-			height: 16px;
-			border-radius: 50%;
-			background: #fff000;
-			top: -6px;
-			right: -8px;
-			box-shadow: 0 0 20px #fff000;
-		}
-		@keyframes animateCircle
-		{
-			0%
-			{
-				transform: rotate(0deg);
-			}
-			100%
-			{
-				transform: rotate(360deg);
-			}
-		}
-
-		@keyframes animate
-		{
-			0%
-			{
-				transform: rotate(45deg);
-			}
-			100%
-			{
-				transform: rotate(405deg);
-			}
-		}
-
-	</style>
-
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
-	<script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
-	<script src="./refugedata/hokkaido.geojson"></script>
-	<script src="./refugedata/aomori.geojson"></script>
-	<script src="./refugedata/iwate.geojson"></script>
-	<script src="./refugedata/miyagi.geojson"></script>
-	<script src="./refugedata/akita.geojson"></script>
-	<script src="./refugedata/yamagata.geojson"></script>
-	<script src="./refugedata/fukushima.geojson"></script>
-	<script src="./refugedata/ibaraki.geojson"></script>
-	<script src="./refugedata/tochigi.geojson"></script>
-	<script src="./refugedata/gunma.geojson"></script>
-	<script src="./refugedata/saitama.geojson"></script>
-	<script src="./refugedata/tiba.geojson"></script>
-	<script src="./refugedata/tokyo.geojson"></script>
-	<script src="./refugedata/kanagawa.geojson"></script>
-	<script src="./refugedata/nigata.geojson"></script>
-	<script src="./refugedata/toyama.geojson"></script>
-	<script src="./refugedata/ishikawa.geojson"></script>
-	<script src="./refugedata/fukui.geojson"></script>
-	<script src="./refugedata/yamanashi.geojson"></script>
-	<script src="./refugedata/nagano.geojson"></script>
-	<script src="./refugedata/gifu.geojson"></script>
-	<script src="./refugedata/shizuoka.geojson"></script>
-	<script src="./refugedata/aichi.geojson"></script>
-	<script src="./refugedata/mie.geojson"></script>
-	<script src="./refugedata/shiga.geojson"></script>
-	<script src="./refugedata/kyoto.geojson"></script>
-	<script src="./refugedata/osaka.geojson"></script>
-	<script src="./refugedata/hyogo.geojson"></script>
-	<script src="./refugedata/nara.geojson"></script>
-	<script src="./refugedata/wakayama.geojson"></script>
-	<script src="./refugedata/tottori.geojson"></script>
-	<script src="./refugedata/shimane.geojson"></script>
-	<script src="./refugedata/hiroshima.geojson"></script>
-	<script src="./refugedata/okayama.geojson"></script>
-	<script src="./refugedata/yamaguchi.geojson"></script>
-	<script src="./refugedata/tokushima.geojson"></script>
-	<script src="./refugedata/kagawa.geojson"></script>
-	<script src="./refugedata/ehime.geojson"></script>
-	<script src="./refugedata/kochi.geojson"></script>
-	<script src="./refugedata/fukuoka.geojson"></script>
-	<script src="./refugedata/saga.geojson"></script>
-	<script src="./refugedata/nagasaki.geojson"></script>
-	<script src="./refugedata/kumamoto.geojson"></script>
-	<script src="./refugedata/oita.geojson"></script>
-	<script src="./refugedata/miyazaki.geojson"></script>
-	<script src="./refugedata/kagoshima.geojson"></script>
-	<script src="./refugedata/okinawa.geojson"></script>
-
-	<script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-	<link rel = "stylesheet" type = "text/css" href = "https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
-	<link rel = "stylesheet" type = "text/css" href = "https://unpkg.com/leaflet.markercluster@1.4.1/dist//MarkerCluster.Default.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
-	<script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
-	<link rel="stylesheet" href="./lib/L.Icon.Pulse.css">
-	<script src="./lib/L.Icon.Pulse.js"></script>
-
-	<script type='module'>
-
-		onload = async () => {
-
-			let tiri = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
-				attribution: '&copy; <a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>,<a href="https://www.gsi.go.jp/bousaichiri/hinanbasho.html" target="_blank">指定緊急避難場所データ</a>'
-			});
-
-			const map = L.map('map', {
-				center: [34.624, 135.341],
-				maxZoom: 18,
-				minZoom: 4,
-				zoomControl: false,
-				zoom: 7,
-				layers: tiri
-			});
-
-			L.control.zoom({
-				position: 'topright'
-			}).addTo(map);
-
-			let b = 0;let marker1;let marker2;let ido; let keido;
-
-			let marker = null;
-
-			let gps_get = (position) => {
-				ido = position.coords.latitude;
-				keido = position.coords.longitude;
-				map.setView([ido, keido], 15);
-
-				let pulsingIcon = L.icon.pulse({iconSize:[12,12],color:'blue', fillColor: 'blue'});
-
-				if(map && marker){
-					map.removeLayer(marker);
-					marker = null;
-				}
-
-				marker = L.marker([ido, keido] ,{icon: pulsingIcon}).addTo(map);
-
-			}
-
-			let gps_error = (error) => {
-				alert("エラーが発生したので、現在地を取得できませんでした。");
-			}
-
-			let GPS = () =>{
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(gps_get,gps_error);
-				} else {
-					alert("エラーが発生したので、現在地を取得できませんでした。");
-				}
-			}
-
-			let gps_button = L.easyButton('fa-location-arrow', function(){ GPS();}, {position: 'topright'}).addTo( map );
-
-
-			/*let geo_layer = [];
-
-			window.select_change = () => {
-
-			map.removeLayer(geo_layer);
-
-			let select_value = select.value;
-
-			console.log(select_value);
-
-			if(select_value == 1){
-				map.setView([43.449, 142.707], 8);
-				geo_layer = L.geoJSON(hokkaido,{onEachFeature: popup_pin, pointToLayer: iro}).addTo(map);
-
-			}
-			else if(select_value == 21){
-
-				map.setView([35.816, 136.980], 8);
-				geo_layer = L.geoJSON(gifu,{onEachFeature: popup_pin, pointToLayer: iro}).addTo(map);
-
-			}
-			
-			}*/
-
-			let pref = new Array(47);let markers = new Array(47);
-
-			let popup_pin = (feature, layer) => {
-				let popup;
-				if (feature.properties && feature.properties.Name) {
-					popup = "名称：" + feature.properties.Name;
-				}
-
-				if (feature.properties && feature.properties.Jusho){
-					popup += '<br>住所：' + feature.properties.Jusho;
-				}
-
-				if (feature.properties && feature.properties.kouzui){
-					popup += '<br>洪水：<span id = "pop_moji">' + feature.properties.kouzui + '</span>';
-				}
-
-				if (feature.properties && feature.properties.gake){
-					popup += '　がけ崩れ、土石流及び地滑り：<span id = "pop_moji">' + feature.properties.gake + '</span><br>';
-				}
-
-				if (feature.properties && feature.properties.takashio){
-					popup += '高潮：<span id = "pop_moji">' + feature.properties.takashio + '</span>';
-				}
-
-				if (feature.properties && feature.properties.jishin){
-					popup += '　地震：<span id = "pop_moji">' + feature.properties.jishin + '</span>';
-				}
-
-				if (feature.properties && feature.properties.tsunami){
-					popup += '　津波：<span id = "pop_moji">' + feature.properties.tsunami + '</span><br>';
-				}
-
-				if (feature.properties && feature.properties.kaji){
-					popup += '大規模な火事：<span id = "pop_moji">' + feature.properties.kaji + '</span>';
-				}
-
-				if (feature.properties && feature.properties.naisui){
-					popup += '　内水氾濫：<span id = "pop_moji">' + feature.properties.naisui + '</span>';
-				}
-
-				if (feature.properties && feature.properties.kazan){
-					popup += '　火山：<span id = "pop_moji">' + feature.properties.kazan + '</span>';
-				}
-
-				layer.bindPopup(popup);
-			}
-
-			let iro = (feature, latlng) => {
-				return L.circleMarker(latlng, {
-					radius: 8,
-					fillColor: "#e2041b",
-					color: "#ffffff",
-					weight: 1,
-					opacity: 1,
-					fillOpacity: 0.8
-				});
-			}
-
-			pref[0] = L.geoJson(hokkaido, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[1] = L.geoJson(aomori, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[2] = L.geoJson(iwate, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[3] = L.geoJson(miyagi, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[4] = L.geoJson(akita, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[5] = L.geoJson(yamagata, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[6] = L.geoJson(fukushima, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[7] = L.geoJson(ibaraki, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[8] = L.geoJson(tochigi, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[9] = L.geoJson(gunma, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[10] = L.geoJson(saitama, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[11] = L.geoJson(tiba, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[12] = L.geoJson(tokyo, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[13] = L.geoJson(kanagawa, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[14] = L.geoJson(nigata, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[15] = L.geoJson(toyama, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[16] = L.geoJson(ishikawa, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[17] = L.geoJson(fukui, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[18] = L.geoJson(yamanashi, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[19] = L.geoJson(nagano, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[20] = L.geoJson(gifu, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[21] = L.geoJson(shizuoka, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[22] = L.geoJson(aichi, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[23] = L.geoJson(mie, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[24] = L.geoJson(shiga, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[25] = L.geoJson(kyoto, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[26] = L.geoJson(osaka, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[27] = L.geoJson(hyogo, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[28] = L.geoJson(nara, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[29] = L.geoJson(wakayama, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[30] = L.geoJson(tottori, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[31] = L.geoJson(shimane, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[32] = L.geoJson(hiroshima, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[33] = L.geoJson(okayama, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[34] = L.geoJson(yamaguchi, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[35] = L.geoJson(tokushima, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[36] = L.geoJson(kagawa, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[37] = L.geoJson(ehime, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[38] = L.geoJson(kochi, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[39] = L.geoJson(fukuoka, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[40] = L.geoJson(saga, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[41] = L.geoJson(nagasaki, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[42] = L.geoJson(kumamoto, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[43] = L.geoJson(oita, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[44] = L.geoJson(miyazaki, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[45] = L.geoJson(kagoshima, {onEachFeature: popup_pin,pointToLayer: iro});
-			pref[46] = L.geoJson(okinawa, {onEachFeature: popup_pin,pointToLayer: iro});
-
-			
-			for ( let i = 0;  i < 47;  i++  ) {
-				markers[i] = L.markerClusterGroup({disableClusteringAtZoom: 13});
-				markers[i].addLayer(pref[i]);
-				map.addLayer(markers[i]);
-			}				
-			
-		}
-
-		let stopload = () =>{
-
-			let loader = document.querySelector('.loading'),
-			page = document.querySelector('.page');
-
-			page.classList.add('is-loaded');
-			loader.classList.add('is-loaded');
-
-		}
-		window.addEventListener('load', stopload);
-
-
-	</script>
-
-
-
-	<title>指定緊急避難場所</title>
-
+        .leaflet-marker-pane {
+            z-index: 343 !important;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="map"></div>
 
-	<div class="loading">
-		<div class="ring">
-			loading
-			<span class="rot"></span>
-		</div>
-	</div>
+    <script type="module">
 
-	<div id='map' class="page"></div>
+        const map = L.map("map", {
+            center: [34.624, 135.341],
+            maxZoom: 18,
+            minZoom: 4,
+            zoomControl: false,
+            zoom: 7
+        });
 
+        L.control.zoom({
+            position: 'topright'
+        }).addTo(map);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        let ido; let keido;
+
+        let marker = null;
+
+        let gps_get = (position) => {
+            ido = position.coords.latitude;
+            keido = position.coords.longitude;
+            map.setView([ido, keido], 15);
+
+            let pulsingIcon = L.icon.pulse({ iconSize: [12, 12], color: 'red', fillColor: 'red' });
+
+            if (map && marker) {
+                map.removeLayer(marker);
+                marker = null;
+            }
+
+            marker = L.marker([ido, keido], { icon: pulsingIcon }).addTo(map);
+
+        }
+
+        let gps_error = (error) => {
+            alert("エラーが発生したので、現在地を取得できませんでした。");
+        }
+
+        let GPS = () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(gps_get, gps_error);
+            } else {
+                alert("エラーが発生したので、現在地を取得できませんでした。");
+            }
+        }
+
+        let gps_button = L.easyButton('fa-location-arrow', function () { GPS(); }, { position: 'topright' }).addTo(map);
+
+
+
+        const tooltip = (d) => {
+
+            if (!d || !d.object) return null;
+            let obj = d.object;
+
+            let description;
+
+            description = obj.Name + "<br>" + obj.Jusho;
+
+            description += '<br>洪水：<span id = "pop_moji">' + obj.kouzui + '</span>';
+
+            description += '　がけ崩れ、土石流及び地滑り：<span id = "pop_moji">' + obj.gake + '</span><br>';
+
+            description += '高潮：<span id = "pop_moji">' + obj.takashio + '</span>';
+
+            description += '　地震：<span id = "pop_moji">' + obj.jishin + '</span>';
+
+            description += '　津波：<span id = "pop_moji">' + obj.tsunami + '</span><br>';
+
+            description += '大規模な火事：<span id = "pop_moji">' + obj.kaji + '</span>';
+
+            description += '　内水氾濫：<span id = "pop_moji">' + obj.naisui + '</span>';
+
+            description += '　火山：<span id = "pop_moji">' + obj.kazan + '</span>';
+
+
+            const html_tr = ["<table>", description, "</table>"].join("\n");
+
+            return {
+                html: html_tr,
+                style: {
+                    background: "rgba(255,255,255,0.9)",
+                    color: "#000000",
+                    width: "250px",
+                    fontsize: "18px"
+                }
+            };
+        };
+
+        const deckLayer = new DeckGlLeaflet.LeafletLayer({
+            views: [
+                new deck.MapView({
+                    repeat: true
+                })
+            ],
+            layers: [
+                new deck.ScatterplotLayer({
+                    id: 'scatterplot-layer',
+                    data: './refugedata/data.json',
+                    pickable: true,
+                    opacity: 0.5,
+                    stroked: true,
+                    filled: true,
+                    radiusScale: 6,
+                    radiusMinPixels: 10,
+                    radiusMaxPixels: 10,
+                    lineWidthMinPixels: 1,
+                    getPosition: d => [Number(d.lon), Number(d.lat)],
+                    getRadius: d => 5,
+                    getFillColor: d => [44, 169, 225],
+                    getLineColor: d => [255, 255, 255]
+                })
+            ],
+
+            getTooltip: tooltip
+        });
+        map.addLayer(deckLayer);
+
+    </script>
 </body>
 
 </html>
