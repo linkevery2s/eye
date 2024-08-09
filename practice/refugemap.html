@@ -10,14 +10,24 @@
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
     <script src="https://unpkg.com/deck.gl@8.6.0/dist.min.js"></script>
+
     <script src="https://unpkg.com/deck.gl-leaflet@1.2.1/dist/deck.gl-leaflet.min.js"></script>
+
     <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
     <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+
     <link rel="stylesheet" href="./lib/L.Icon.Pulse.css">
     <script src="./lib/L.Icon.Pulse.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         html,
@@ -30,11 +40,11 @@
             z-index: 0;
         }
 
-        #pop_moji{
-			color: #ff0000;
-			font-size: 18px;
+        #pop_moji {
+            color: #ff0000;
+            font-size: 18px;
             font-weight: bold !important;
-		}
+        }
 
         .deck-tooltip {
             z-index: 100 !important;
@@ -43,11 +53,64 @@
         .leaflet-marker-pane {
             z-index: 343 !important;
         }
+
+        #statis {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            display: none;
+            z-index: 110;
+            background: rgba(255, 255, 255, .8);
+            height: 220px;
+            border: none;
+            font-size: 0.875rem;
+            /*1px solid #0095d9;*/
+            padding: 0;
+            border-radius: .3em;
+        }
+
+        #graph {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 1em;
+        }
+
+        #closed-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            border-radius: .3em;
+            color: #ffffff;
+            background: #1e50a2;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        #closed-btn:hover {
+            background: rgba(255, 255, 255, .8);
+            color: #1e50a2;
+            border: 1px solid #1e50a2;
+        }
+
+        @media screen and (min-width:768px) {
+            #statis {
+                font-size: 1.125rem;
+                height: 240px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="map"></div>
+
+    <div id="statis"><span id="closed-btn" class="py-2 px-3 text-xs">閉じる</span>
+        <div id="graph"></div>
+    </div>
 
     <script type="module">
 
@@ -101,7 +164,36 @@
 
         let gps_button = L.easyButton('fa-location-arrow', function () { GPS(); }, { position: 'topright' }).addTo(map);
 
+        let graph_show = (d) => {
 
+            if (!d || !d.object) return null;
+            let obj = d.object;
+
+            let description;
+
+            description = obj.Name + "<br><br>" + obj.Jusho;
+
+            description += '<br><br>洪水：<span id = "pop_moji">' + obj.kouzui + '</span>';
+
+            description += '　がけ崩れ、土石流及び地滑り：<span id = "pop_moji">' + obj.gake + '</span><br>';
+
+            description += '高潮：<span id = "pop_moji">' + obj.takashio + '</span>';
+
+            description += '　地震：<span id = "pop_moji">' + obj.jishin + '</span>';
+
+            description += '　津波：<span id = "pop_moji">' + obj.tsunami + '</span><br>';
+
+            description += '大規模な火事：<span id = "pop_moji">' + obj.kaji + '</span>';
+
+            description += '　内水氾濫：<span id = "pop_moji">' + obj.naisui + '</span>';
+
+            description += '　火山：<span id = "pop_moji">' + obj.kazan + '</span>';
+
+            document.getElementById("graph").innerHTML = description;
+
+            $('#statis').fadeIn();
+
+        }
 
         const tooltip = (d) => {
 
@@ -163,13 +255,18 @@
                     getPosition: d => [Number(d.lon), Number(d.lat)],
                     getRadius: d => 5,
                     getFillColor: d => [44, 169, 225],
-                    getLineColor: d => [255, 255, 255]
+                    getLineColor: d => [255, 255, 255],
+                    onClick: graph_show
                 })
-            ],
-
-            getTooltip: tooltip
+            ]
         });
         map.addLayer(deckLayer);
+
+        const closed_btn = document.querySelector("#closed-btn");
+
+        closed_btn.addEventListener('click', () => {
+            $('#statis').fadeOut();
+        });
 
     </script>
 </body>
