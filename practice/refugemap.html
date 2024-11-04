@@ -195,45 +195,6 @@
 
         }
 
-        const tooltip = (d) => {
-
-            if (!d || !d.object) return null;
-            let obj = d.object;
-
-            let description;
-
-            description = obj.Name + "<br>" + obj.Jusho;
-
-            description += '<br>洪水：<span id = "pop_moji">' + obj.kouzui + '</span>';
-
-            description += '　がけ崩れ、土石流及び地滑り：<span id = "pop_moji">' + obj.gake + '</span><br>';
-
-            description += '高潮：<span id = "pop_moji">' + obj.takashio + '</span>';
-
-            description += '　地震：<span id = "pop_moji">' + obj.jishin + '</span>';
-
-            description += '　津波：<span id = "pop_moji">' + obj.tsunami + '</span><br>';
-
-            description += '大規模な火事：<span id = "pop_moji">' + obj.kaji + '</span>';
-
-            description += '　内水氾濫：<span id = "pop_moji">' + obj.naisui + '</span>';
-
-            description += '　火山：<span id = "pop_moji">' + obj.kazan + '</span>';
-
-
-            const html_tr = ["<table>", description, "</table>"].join("\n");
-
-            return {
-                html: html_tr,
-                style: {
-                    background: "rgba(255,255,255,0.9)",
-                    color: "#000000",
-                    width: "250px",
-                    fontsize: "18px"
-                }
-            };
-        };
-
         const deckLayer = new DeckGlLeaflet.LeafletLayer({
             views: [
                 new deck.MapView({
@@ -249,8 +210,8 @@
                     stroked: true,
                     filled: true,
                     radiusScale: 6,
-                    radiusMinPixels: 10,
-                    radiusMaxPixels: 10,
+                    radiusMinPixels: 5,
+                    radiusMaxPixels: 30,
                     lineWidthMinPixels: 1,
                     getPosition: d => [Number(d.lon), Number(d.lat)],
                     getRadius: d => 5,
