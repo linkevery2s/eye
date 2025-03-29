@@ -238,7 +238,7 @@
             description += '　火山：<span id = "pop_moji">' + obj.kazan + '</span>';
 
             if (obj.hosoku != "") {
-                description += '<br>補足事項' + obj.hosoku + '</div>';
+                description += '<br>補足事項：' + obj.hosoku + '</div>';
             } else { }
 
             document.getElementById("graph").innerHTML = description;
@@ -257,7 +257,7 @@
             description = "<div class = 'text-xl mb-3'>指定緊急避難所</div>" + obj.name + "<br>" + "<div class = 'mb-3' >" + obj.address + "</div>";
 
             if (obj.hosoku != "") {
-                description += '<br>補足事項' + obj.hosoku + '</span>';
+                description += '<br>補足事項：' + obj.hosoku + '</span>';
             } else { }
 
             document.getElementById("graph").innerHTML = description;
