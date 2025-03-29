@@ -171,9 +171,57 @@
 
             let description;
 
-            description = obj.Name + "<br><br>" + obj.Jusho;
+            description = "<div class='text-xl mb-3'>指定緊急避難場所</div>" + obj.name + "<br>" + "<div class = 'mb-3' >" + obj.address + "</div>";
 
-            description += '<br><br>洪水：<span id = "pop_moji">' + obj.kouzui + '</span>';
+            if (obj.kouzui == "1") {
+                obj.kouzui = "◯";
+            } else {
+                obj.kouzui = "×";
+            }
+
+            if (obj.gake == "1") {
+                obj.gake = "◯";
+            } else {
+                obj.gake = "×";
+            }
+
+            if (obj.takashio == "1") {
+                obj.takashio = "◯";
+            } else {
+                obj.takashio = "×";
+            }
+
+            if (obj.jishin == "1") {
+                obj.jishin = "◯";
+            } else {
+                obj.jishin = "×";
+            }
+
+            if (obj.tsunami == "1") {
+                obj.tsunami = "◯";
+            } else {
+                obj.tsunami = "×";
+            }
+
+            if (obj.kaji == "1") {
+                obj.kaji = "◯";
+            } else {
+                obj.kaji = "×";
+            }
+
+            if (obj.naisui == "1") {
+                obj.naisui = "◯";
+            } else {
+                obj.naisui = "×";
+            }
+
+            if (obj.kazan == "1") {
+                obj.kazan = "◯";
+            } else {
+                obj.kazan = "×";
+            }
+
+            description += '洪水：<span id = "pop_moji">' + obj.kouzui + '</span>';
 
             description += '　がけ崩れ、土石流及び地滑り：<span id = "pop_moji">' + obj.gake + '</span><br>';
 
@@ -189,6 +237,29 @@
 
             description += '　火山：<span id = "pop_moji">' + obj.kazan + '</span>';
 
+            if (obj.hosoku != "") {
+                description += '<br>補足事項' + obj.hosoku + '</div>';
+            } else { }
+
+            document.getElementById("graph").innerHTML = description;
+
+            $('#statis').fadeIn();
+
+        }
+
+        let graph_show2 = (d) => {
+
+            if (!d || !d.object) return null;
+            let obj = d.object;
+
+            let description;
+
+            description = "<div class = 'text-xl mb-3'>指定緊急避難所</div>" + obj.name + "<br>" + "<div class = 'mb-3' >" + obj.address + "</div>";
+
+            if (obj.hosoku != "") {
+                description += '<br>補足事項' + obj.hosoku + '</span>';
+            } else { }
+
             document.getElementById("graph").innerHTML = description;
 
             $('#statis').fadeIn();
@@ -203,8 +274,8 @@
             ],
             layers: [
                 new deck.ScatterplotLayer({
-                    id: 'scatterplot-layer',
-                    data: './refugedata/data.json',
+                    id: 'hinanbasyo',
+                    data: './refugedata/hinanbasyo.json',
                     pickable: true,
                     opacity: 0.5,
                     stroked: true,
@@ -213,12 +284,31 @@
                     radiusMinPixels: 5,
                     radiusMaxPixels: 30,
                     lineWidthMinPixels: 1,
-                    getPosition: d => [Number(d.lon), Number(d.lat)],
+                    getPosition: d => [Number(d.lng), Number(d.lat)],
                     getRadius: d => 5,
                     getFillColor: d => [44, 169, 225],
                     getLineColor: d => [255, 255, 255],
                     onClick: graph_show
+                }),
+
+                new deck.ScatterplotLayer({
+                    id: 'hinanjo',
+                    data: './refugedata/hinanjo.json',
+                    pickable: true,
+                    opacity: 0.5,
+                    stroked: true,
+                    filled: true,
+                    radiusScale: 6,
+                    radiusMinPixels: 5,
+                    radiusMaxPixels: 30,
+                    lineWidthMinPixels: 1,
+                    getPosition: d => [Number(d.lng), Number(d.lat)],
+                    getRadius: d => 5,
+                    getFillColor: d => [240, 131, 0],
+                    getLineColor: d => [255, 255, 255],
+                    onClick: graph_show2
                 })
+
             ]
         });
         map.addLayer(deckLayer);
